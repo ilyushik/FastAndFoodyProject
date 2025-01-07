@@ -1,0 +1,99 @@
+.userMainView-container {
+    height: 100%;
+    padding-top: 50px;
+}
+
+.userMainView-container-sectionFirst {
+    display: flex;
+    gap: 10%;
+    height: auto;
+}
+
+.userMainView-container-sectionFirst-info {
+    display: block;
+    text-align: start;
+}
+
+.userMainView-container-sectionFirst-info-title {
+    padding-bottom: 10px;
+}
+
+.userMainView-container-sectionFirst-info-title-text {
+    height: 0;
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.userMainView-container-sectionFirst-info-paragraph {
+
+}
+
+.userMainView-container-sectionFirst-info-paragraph-text {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.userMainView-container-sectionFirst-info-button-block {
+
+}
+
+.userMainView-container-sectionFirst-info-button {
+    color: #fff;
+    background: #FFA00D;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.userMainView-container-sectionFirst-imageBlock {
+
+}
+
+.userMainView-container-sectionFirst-imageBlock-img {
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.userMainView-container-sectionSecond {
+    display: flex;
+    gap: 10%;
+    height: auto;
+    padding-top: 50px;
+}
+
+.userMainView-container-sectionSecond .userMainView-container-sectionFirst-info {
+    text-align: right;
+}
+
+@media screen and (max-width: 1500px){
+    .userMainView-container-sectionFirst-info-title-text {
+        font-size: 28px;
+    }
+
+    .userMainView-container-sectionFirst-info-paragraph-text {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .userMainView-container-sectionFirst-imageBlock-img {
+        width: 400px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .userMainView-container-sectionFirst-info-title-text {
+        font-size: 25px;
+    }
+
+    .userMainView-container-sectionFirst-info-paragraph-text {
+        font-size: 15px;
+    }
+}

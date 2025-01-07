@@ -1,0 +1,45 @@
+.Layout {
+    height: 100%;
+}
+
+.Layout-background {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../images/background.png");
+    background-repeat: repeat;
+    filter: blur(4px);
+    z-index: -5;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.Layout-container {
+}
+
+.Layout-block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Layout-content {
+    flex: 1;
+    margin-bottom: 130px;
+}
+
+@media screen and (min-width: 1650px) {
+    .Layout-content {
+        padding: 0 15%;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    .Layout-content {
+        padding: 0 10%;
+    }
+}
+
