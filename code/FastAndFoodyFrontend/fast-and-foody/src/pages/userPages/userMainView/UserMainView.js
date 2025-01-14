@@ -1,11 +1,11 @@
 import "./UserMainView.css"
-import Layout from "../../components/usersComponents/Layout/Layout";
+import LayoutUserMainView from "../../components/usersComponents/LayoutUserMainView/LayoutUserMainView";
 import section_one from "../../images/block1.png"
 import section_two from "../../images/block2.png"
 
 export default function UserMainView() {
     return (
-        <Layout>
+        <LayoutUserMainView>
             <div className="userMainView-container">
                 <div className="userMainView-container-sectionFirst">
                     <div className="userMainView-container-sectionFirst-info">
@@ -69,6 +69,6 @@ export default function UserMainView() {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </LayoutUserMainView>
     )
 }
