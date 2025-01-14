@@ -58,6 +58,8 @@
     width: 500px;
     height: 350px;
     border-radius: 10px;
+    position: relative;
+    top: 20px;
 }
 
 .userMainView-container-sectionSecond {
@@ -95,5 +97,69 @@
 
     .userMainView-container-sectionFirst-info-paragraph-text {
         font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .userMainView-container-sectionFirst-info-title-text {
+        font-size: 23px;
+    }
+
+    .userMainView-container-sectionFirst-info-paragraph-text {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .userMainView-container-sectionFirst-info-button {
+        font-size: 18px;
+    }
+    .userMainView-container-sectionFirst-info-title-text {
+        font-size: 21px;
+    }
+
+    .userMainView-container-sectionFirst-info-paragraph-text {
+        font-size: 11px;
+    }
+
+    .userMainView-container-sectionFirst-imageBlock-img {
+        width: 350px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .userMainView-container-sectionFirst-info-button {
+        font-size: 16px;
+    }
+    .userMainView-container-sectionFirst-info-title-text {
+        font-size: 18px;
+    }
+
+    .userMainView-container-sectionFirst-info-paragraph-text {
+        font-size: 11px;
+    }
+
+    .userMainView-container-sectionFirst-imageBlock-img {
+        width: 250px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .userMainView-container-sectionFirst-info-button {
+        font-size: 16px;
+    }
+    .userMainView-container-sectionFirst-info-title-text {
+        font-size: 18px;
+    }
+
+    .userMainView-container-sectionFirst-info-paragraph-text {
+        font-size: 11px;
+    }
+
+    .userMainView-container-sectionFirst-imageBlock-img {
+        width: 250px;
+        height: 180px;
     }
 }

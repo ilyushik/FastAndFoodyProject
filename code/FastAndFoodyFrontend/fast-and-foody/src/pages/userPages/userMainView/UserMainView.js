@@ -1,7 +1,7 @@
 import "./UserMainView.css"
-import LayoutUserMainView from "../../components/usersComponents/LayoutUserMainView/LayoutUserMainView";
-import section_one from "../../images/block1.png"
-import section_two from "../../images/block2.png"
+import LayoutUserMainView from "../../../components/usersComponents/LayoutUserMainView/LayoutUserMainView";
+import section_one from "../../../images/block1.png"
+import section_two from "../../../images/block2.png"
 
 export default function UserMainView() {
     return (

@@ -1,0 +1,121 @@
+.userInfoOrderTemplate-component {
+    width: 40%;
+    height: auto;
+    align-items: center;
+    padding: 10px 20px;
+    background: #FFA00D;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.userInfoOrderTemplate-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userInfoOrderTemplate-info {
+
+}
+
+.userInfoOrderTemplate-info-title {
+    color: #eee;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.userInfoOrderTemplate-info-value {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.userInfoOrderTemplate-button {
+
+}
+
+.userInfoOrderTemplate-button button {
+    border: none;
+    background: transparent;
+}
+
+.userInfoOrderTemplate-button-icon {
+    transition: ease-in-out 0.3s;
+}
+
+.userInfoOrderTemplate-button-icon:hover {
+    transform: scale(1.15);
+}
+
+@media screen and (max-width: 2100px) {
+    .userInfoOrderTemplate-component {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    .userInfoOrderTemplate-component {
+        width: 45%;
+    }
+
+    .userInfoOrderTemplate-info-title {
+        font-size: 17px;
+        height: 10px;
+    }
+
+    .userInfoOrderTemplate-info-value {
+        font-size: 17px;
+        height: 10px;
+    }
+
+    .userInfoOrderTemplate-component {
+        padding: 7px 17px;
+    }
+
+    .userInfoOrderTemplate-button-icon {
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .userInfoOrderTemplate-info-title {
+        font-size: 17px;
+        height: 10px;
+    }
+
+    .userInfoOrderTemplate-info-value {
+        font-size: 17px;
+        height: 10px;
+    }
+
+    .userInfoOrderTemplate-component {
+        padding: 7px 17px;
+    }
+
+    .userInfoOrderTemplate-button-icon {
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .userInfoOrderTemplate-info-title {
+        font-size: 15px;
+        height: 10px;
+    }
+
+    .userInfoOrderTemplate-info-value {
+        font-size: 15px;
+        height: 10px;
+    }
+
+    .userInfoOrderTemplate-button-icon {
+        width: 40px;
+    }
+
+    .userInfoOrderTemplate-component {
+        padding: 5px 15px;
+    }
+}

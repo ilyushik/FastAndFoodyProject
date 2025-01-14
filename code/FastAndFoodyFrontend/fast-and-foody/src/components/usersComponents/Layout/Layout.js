@@ -1,8 +1,7 @@
-import "./LayoutUserMainView.css"
+import "./Layout.css"
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
-export default function LayoutUserMainView({children}) {
+export default function Layout({children}) {
     return (
         <div className="Layout">
             <div className="Layout-background"></div>
@@ -15,8 +14,6 @@ export default function LayoutUserMainView({children}) {
                         {children}
                     </div>
                 </div>
-
-                <Footer />
             </div>
         </div>
     )

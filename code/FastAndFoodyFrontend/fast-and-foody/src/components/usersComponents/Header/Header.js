@@ -33,7 +33,7 @@ export default function Header() {
                 <a className="UserHeader-navbar-button" href="#">Menu</a>
                 <a className="UserHeader-navbar-button" href="#">About us</a>
                 <a className="UserHeader-navbar-button" href="#">Contacts</a>
-                <a className="UserHeader-navbar-button" href="#">Account</a>
+                <a className="UserHeader-navbar-button" href="/my-info">Account</a>
                 <a className="UserHeader-navbar-button" href="#">Add order</a>
             </nav>
 

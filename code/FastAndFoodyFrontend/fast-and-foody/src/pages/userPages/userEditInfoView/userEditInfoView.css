@@ -1,0 +1,76 @@
+.userEditInfoView-container {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.userEditInfoView-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    align-items: center;
+    bottom: 20vh;
+}
+.userEditInfoView-content-image-block {}
+
+.userEditInfoView-content-image {
+    width: 400px;
+}
+
+.userEditInfoView-content-info-block {}
+
+.userEditInfoView-content-info-block-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.userEditInfoView-content-info-block-form-input-block {}
+
+.userEditInfoView-content-info-block-form-input-label {
+    height: 3px;
+    color: #808080;
+    padding: 0 0 0 15px;
+}
+
+.userEditInfoView-content-info-input {
+    width: 600px;
+    height: 45px;
+    border: none;
+    background: #d9d9d9;
+    font-size: 20px;
+    font-weight: 350;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    padding: 0 15px;
+}
+
+.edit-user-error {
+    color: red;
+    margin: 10px;
+    padding: 0;
+}
+
+.userEditInfoView-content-info-block-button-block {}
+
+.userEditInfoView-content-info-block-button {
+    width: 630px;
+    height: 45px;
+    border: none;
+    background: #FFA00D;
+    color: white;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.userEditInfoView-content-info-block-button.disabled {
+    background: #fdc871;
+}

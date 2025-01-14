@@ -108,3 +108,167 @@ input::placeholder {
     border: none;
     font-family: 'Montserrat', sans-serif;
 }
+
+@media screen and (max-width: 1250px) {
+    .entranceView-logo {
+        width: 80px;
+    }
+
+    .entranceView-block-info-form-title {
+        font-size: 35px;
+    }
+
+    .entranceView-block-info-form-input-block {
+        margin-bottom: 20px;
+    }
+
+    .entranceView-block-info-form-button-block {
+        padding-top: 15px;
+    }
+
+    .entranceView-block-info-form-button {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .entranceView-logo {
+        width: 70px;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .entranceView-block-info-form-title {
+        font-size: 25px;
+        height: 20px;
+        margin: 12px;
+    }
+
+    .entranceView-block-info-form-input-block {
+        margin-bottom: 10px;
+    }
+
+    .entranceView-block-info-form-input {
+        width: 70%;
+    }
+
+    .entranceView-block-info-form-button-block {
+        padding-top: 15px;
+    }
+
+    .entranceView-block-info-form-button {
+        margin-bottom: 10px;
+    }
+
+    .entranceView-block-info-form-button {
+        font-size: 15px;
+    }
+
+    .entranceView-block-info-additional-button {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .entranceView-logo {
+        width: 70px;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .entranceView-block {
+        width: 50%;
+    }
+
+    .entranceView-block-info-form-title {
+        font-size: 25px;
+        height: 20px;
+        margin: 12px;
+    }
+
+    .entranceView-block-info-form-input-block {
+        margin-bottom: 10px;
+    }
+
+    .entranceView-block-info-form-input {
+        width: 70%;
+    }
+
+    .entranceView-block-info-form-button-block {
+        padding-top: 15px;
+    }
+
+    .entranceView-block-info-form-button {
+        margin-bottom: 10px;
+    }
+
+    .entranceView-block-info-form-button {
+        font-size: 15px;
+    }
+
+    .entranceView-block-info-additional-button {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .entranceView-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .entranceView-block {
+        position: relative;
+        width: 80%;
+        height: auto;
+        background: #eeeeee;
+        opacity: 0.8;
+        z-index: 1;
+        align-items: center;
+        padding: 20px 0;
+        border-radius: 10px;
+    }
+
+    .entranceView-logo {
+        width: 60px;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .entranceView-block-info-form-title {
+        font-size: 22px;
+        height: 20px;
+        margin: 12px;
+    }
+
+    .entranceView-block-info-form-input-block {
+        margin-bottom: 10px;
+    }
+
+    .entranceView-block-info-form-input {
+        width: 70%;
+    }
+
+    .entranceView-block-info-form-button-block {
+        padding-top: 15px;
+    }
+
+    .entranceView-block-info-form-button {
+        margin-bottom: 10px;
+    }
+
+    .entranceView-block-info-form-button {
+        font-size: 15px;
+        padding: 7px 30px;
+    }
+
+    .entranceView-block-info-additional-button {
+        font-size: 12px;
+    }
+}
