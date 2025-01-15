@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mysql_db:
+    image: mysql
+    container_name: mysqldb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 30042005
+      MYSQL_DATABASE: FastAndFoody
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 30042005
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - docker_app
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  backend:
+    image: kamaraliilya/fastandfoody_backend:latest  
+    container_name: spring_app
+    restart: always
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/FastAndFoody
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: 30042005
+    ports:
+      - "8080:8080"
+    networks:
+      - docker_app
+
+  frontend:
+    image: kamaraliilya/fastandfoody_frontend:latest  
+    container_name: react_app
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    networks:
+      - docker_app
+
+networks:
+  docker_app:
+    driver: bridge
