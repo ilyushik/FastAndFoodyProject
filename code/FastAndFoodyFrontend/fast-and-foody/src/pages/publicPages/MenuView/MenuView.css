@@ -1,0 +1,23 @@
+body {
+    overflow-y: scroll;
+}
+
+.menuView-block {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 20px;
+}
+
+.category-title {
+    color: white;
+    height: 10px;
+}
+
+.menuView-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-top: 10px;
+    border-top: white 1px solid;
+}

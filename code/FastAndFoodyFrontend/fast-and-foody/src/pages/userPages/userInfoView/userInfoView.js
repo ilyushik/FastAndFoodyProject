@@ -1,6 +1,5 @@
 import "./userInfoView.css"
 import Layout from "../../../components/usersComponents/Layout/Layout";
-import image from "../../../images/image 11.png"
 import UserInfoOrderTemplate from "../../../components/usersComponents/userInfoOrderTemplate/userInfoOrderTemplate";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";

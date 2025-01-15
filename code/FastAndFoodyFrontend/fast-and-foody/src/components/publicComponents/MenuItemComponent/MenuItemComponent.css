@@ -1,0 +1,47 @@
+.menuItemComponent-container {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 15vw;
+    aspect-ratio: 3/4;
+}
+
+.menuItemComponent-image {
+    width: 100%;
+    height: 70%;
+    border-radius: 10px 10px 0 0;
+}
+
+.menuItemComponent-info-block {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px 0 10px;
+    align-items: center;
+}
+
+.menuItemComponent-info {}
+
+.menuItemComponent-info-itemName {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+.menuItemComponent-info-itemPrice {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #FFA00D;
+}
+
+.menuItemComponent-add-button-block {
+}
+
+.menuItemComponent-add-button {
+    border: none;
+    background: transparent;
+}
+
+.menuItemComponent-add-button-icon {
+    height: 30px;
+}

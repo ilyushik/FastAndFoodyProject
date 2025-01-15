@@ -1,6 +1,5 @@
 import "./userEditInfoView.css"
 import Layout from "../../../components/usersComponents/Layout/Layout";
-import photo from "../../../images/image 11.png"
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -61,7 +60,8 @@ export default function UserEditInfoView() {
     }
 
     const submitHandler = async (event) => {
-        if (name.length < 1 && surname.length < 1 && email.length < 1 && phone.length < 1 && username.length < 1 && imageLink.length < 1) {
+        if (name.length < 1 && surname.length < 1 && email.length < 1 && phone.length < 1 && username.length < 1 &&
+            imageLink.length < 1) {
             setIsFormValid(false);
             return
         }
@@ -78,7 +78,8 @@ export default function UserEditInfoView() {
         }
 
         try {
-            const response = await axios.post(`http://localhost:8080/my-info/edit`, updatedData, {})
+            const response = await axios.post(`http://localhost:8080/my-info/edit`, updatedData,
+                {})
             console.log(response.data)
             navigator('/my-info')
         } catch (e) {
@@ -100,48 +101,55 @@ export default function UserEditInfoView() {
                             {/*name*/}
                             <div className="userEditInfoView-content-info-block-form-input-block">
                                 <p className="userEditInfoView-content-info-block-form-input-label">Name:</p>
-                                <input className="userEditInfoView-content-info-input" type="text" value={name} onChange={nameHandler} placeholder={user.name}/>
+                                <input className="userEditInfoView-content-info-input" type="text" value={name}
+                                       onChange={nameHandler} placeholder={user.name}/>
                             </div>
                             {error.name && (<p className="edit-user-error">{error.name}</p>)}
 
                             {/*surname*/}
                             <div className="userEditInfoView-content-info-block-form-input-block">
                                 <p className="userEditInfoView-content-info-block-form-input-label">Surname:</p>
-                                <input className="userEditInfoView-content-info-input" type="text" value={surname} onChange={surnameHandler} placeholder={user.surname}/>
+                                <input className="userEditInfoView-content-info-input" type="text" value={surname}
+                                       onChange={surnameHandler} placeholder={user.surname}/>
                             </div>
                             {error.surname && (<p className="edit-user-error">{error.surname}</p>)}
 
                             {/*email*/}
                             <div className="userEditInfoView-content-info-block-form-input-block">
                                 <p className="userEditInfoView-content-info-block-form-input-label">Email:</p>
-                                <input className="userEditInfoView-content-info-input" type="text" value={email} onChange={emailHandler} placeholder={user.email}/>
+                                <input className="userEditInfoView-content-info-input" type="text" value={email}
+                                       onChange={emailHandler} placeholder={user.email}/>
                             </div>
                             {error.email && (<p className="edit-user-error">{error.email}</p>)}
 
                             {/*phone*/}
                             <div className="userEditInfoView-content-info-block-form-input-block">
                                 <p className="userEditInfoView-content-info-block-form-input-label">Phone:</p>
-                                <input className="userEditInfoView-content-info-input" type="text" value={phone} onChange={phoneHandler} placeholder={user.phone}/>
+                                <input className="userEditInfoView-content-info-input" type="text" value={phone}
+                                       onChange={phoneHandler} placeholder={user.phone}/>
                             </div>
                             {error.phone && (<p className="edit-user-error">{error.phone}</p>)}
 
                             {/*username*/}
                             <div className="userEditInfoView-content-info-block-form-input-block">
                                 <p className="userEditInfoView-content-info-block-form-input-label">Username:</p>
-                                <input className="userEditInfoView-content-info-input" type="text" value={username} onChange={usernameHandler} placeholder={user.username}/>
+                                <input className="userEditInfoView-content-info-input" type="text" value={username}
+                                       onChange={usernameHandler} placeholder={user.username}/>
                             </div>
                             {error.username && (<p className="edit-user-error">{error.username}</p>)}
 
                             {/*image*/}
                             <div className="userEditInfoView-content-info-block-form-input-block">
                                 <p className="userEditInfoView-content-info-block-form-input-label">Image:</p>
-                                <input className="userEditInfoView-content-info-input" type="text" value={imageLink} onChange={imageLinkHandler} placeholder={user.image}/>
+                                <input className="userEditInfoView-content-info-input" type="text" value={imageLink}
+                                       onChange={imageLinkHandler} placeholder={user.image}/>
                             </div>
                             {error.image && (<p className="edit-user-error">{error.image}</p>)}
                         </form>
 
                         <div className="userEditInfoView-content-info-block-button-block">
-                            <button className={`userEditInfoView-content-info-block-button`} onClick={submitHandler} >Update profile</button>
+                            <button className={`userEditInfoView-content-info-block-button`} onClick={submitHandler}>
+                                Update profile</button>
                         </div>
                     </div>
                 </div>

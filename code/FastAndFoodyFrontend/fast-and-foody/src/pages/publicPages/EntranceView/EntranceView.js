@@ -1,6 +1,6 @@
 import "./EntranceView.css"
 
-import logo from "../../images/logo_crop.png"
+import logo from "../../../images/logo_crop.png"
 import {useState} from "react";
 
 export default function EntranceView() {

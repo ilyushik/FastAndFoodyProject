@@ -9,7 +9,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../../images/back_reg.png");
+    background-image: url("../../../images/back_reg.png");
     background-repeat: repeat;
     filter: blur(4px);
     z-index: -5;
