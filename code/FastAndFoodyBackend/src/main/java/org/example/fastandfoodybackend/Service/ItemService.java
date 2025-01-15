@@ -22,7 +22,19 @@ public class ItemService {
         }).toList();
     }
 
+    // list of itemsDto
     public List<ItemDTO> items() {
         return itemListToItemDTO(itemRepository.findAll());
+    }
+
+    //find item by id(dto)
+    public ItemDTO itemById(int id) {
+        Item item = itemRepository.findById(id).orElse(null);
+        if (item == null) {
+            return null;
+        }
+        ItemDTO itemDTO = new ItemDTO(item.getId(), item.getItemName(), item.getPrice(), item.getDescription(),
+                item.getImage(), item.getCategory().getCategoryName());
+        return itemDTO;
     }
 }
