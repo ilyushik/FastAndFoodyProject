@@ -4,12 +4,15 @@ import responsiveIconFalse from "../../../images/menu.png"
 import responsiveIconTrue from "../../../images/close_cross.png"
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import cart from "../../../images/cart.svg"
+import PopupCart from "../../publicComponents/PopupCart/PopupCart";
 
 export default function Header() {
-    const[showNavBar, setShowNavBar] = useState(false)
+    const [showNavBar, setShowNavBar] = useState(false)
     const navigator = useNavigate()
+    const [showCart, setShowCart] = useState(false)
 
-    const responsive = () => {
+    const responsiveNav = () => {
         if (showNavBar) {
             return (
                 <button className="UserHeader-navbar-responsive" onClick={() => setShowNavBar(false)}>
@@ -37,10 +40,17 @@ export default function Header() {
                 <a className="UserHeader-navbar-button" href="#">Contacts</a>
                 <a className="UserHeader-navbar-button" href="/my-info">Account</a>
                 <a className="UserHeader-navbar-button" href="#">Add order</a>
-                <button className="UserHeader-navbar-button">Cart</button>
+                <button className="UserHeader-navbar-button" onClick={() => setShowCart(!showCart)}>Cart</button>
             </nav>
 
-            {responsive()}
+            <div className="responsive-icons">
+                <button className="UserHeader-navbar-cart" onClick={() => setShowCart(!showCart)}>
+                    <img className="UserHeader-navbar-cart-image" src={cart}/>
+                </button>
+
+                {responsiveNav()}
+            </div>
+            {showCart && (<PopupCart/>)}
         </div>
     )
 }

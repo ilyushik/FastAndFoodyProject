@@ -3,6 +3,7 @@
     border-radius: 10px;
     width: 15vw;
     aspect-ratio: 3/4;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
 }
 
 .menuItemComponent-image {
@@ -16,19 +17,20 @@
     justify-content: space-between;
     padding: 0 5px 0 10px;
     align-items: center;
+    height: 30%;
 }
 
 .menuItemComponent-info {}
 
 .menuItemComponent-info-itemName {
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     color: black;
 }
 
 .menuItemComponent-info-itemPrice {
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     color: #FFA00D;
@@ -43,5 +45,47 @@
 }
 
 .menuItemComponent-add-button-icon {
-    height: 30px;
+    height: 45px;
+}
+
+@media screen and (max-width: 2200px) {
+    .menuItemComponent-info-itemName {
+        font-size: 18px;
+    }
+
+    .menuItemComponent-info-itemPrice {
+        font-size: 18px;
+    }
+
+    .menuItemComponent-add-button-icon {
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .menuItemComponent-info-itemName {
+        font-size: 15px;
+    }
+
+    .menuItemComponent-info-itemPrice {
+        font-size: 15px;
+    }
+
+    .menuItemComponent-add-button-icon {
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .menuItemComponent-info-itemName {
+        font-size: 12px;
+    }
+
+    .menuItemComponent-info-itemPrice {
+        font-size: 12px;
+    }
+
+    .menuItemComponent-add-button-icon {
+        height: 25px;
+    }
 }

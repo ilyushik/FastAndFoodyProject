@@ -34,17 +34,6 @@ export default function MenuView() {
 
     const groupedItems = groupItemsByCategory(items);
 
-    const addItemToLocalStorage = (item) => {
-        let storedItems = JSON.parse(localStorage.getItem("items"));
-        if (!Array.isArray(storedItems)) {
-            storedItems = [];
-        }
-
-        localStorage.setItem("items", JSON.stringify([...storedItems, item]));
-    };
-
-
-
     return (
         <Layout>
             <div className="menuView-block">
@@ -54,8 +43,7 @@ export default function MenuView() {
                             <h2 className="category-title">{category}</h2>
                             <div className="menuView-container">
                                 {categoryItems.map((item) => (
-                                    <MenuItemComponent key={item.id} item={item} addItem={() =>
-                                        addItemToLocalStorage(item)} />
+                                    <MenuItemComponent key={item.id} item={item} />
                                 ))}
                             </div>
                         </div>

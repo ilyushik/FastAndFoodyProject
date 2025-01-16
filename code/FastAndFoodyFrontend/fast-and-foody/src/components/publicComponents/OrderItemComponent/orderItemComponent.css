@@ -1,0 +1,40 @@
+.orderItemComponent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.orderItemComponent-image-name {
+    display: flex;
+    gap: 20px;
+}
+
+.orderItemComponent-image {
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+}
+
+.orderItemComponent-text {
+    width: 20%;
+}
+
+.orderItemComponent-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: grey;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.orderItemComponent-value {
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.orderItemComponent-remove-icon {
+    width: 50px;
+    height: 40px;
+}

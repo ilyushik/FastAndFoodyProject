@@ -40,7 +40,17 @@
     display: none;
 }
 
-@media (max-width: 1100px) {
+.UserHeader-navbar-cart {
+    display: none;
+    background: transparent;
+    border: none;
+}
+
+.responsive-icons {
+    display: none;
+}
+
+@media (max-width: 1300px) {
     .UserHeader-container {
         height: 80px;
     }
@@ -50,21 +60,34 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .UserHeader-navbar-button {
         font-size: 17px;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .UserHeader-image {
         height: 50px;
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
+    .responsive-icons {
+        display: flex;
+        gap: 10px;
+    }
+
     .UserHeader-navbar {
         display: none;
+    }
+
+    .UserHeader-navbar-cart {
+        display: block;
+    }
+
+    .UserHeader-navbar-cart-image {
+        height: 40px;
     }
 
     .UserHeader-navbar-responsive {
