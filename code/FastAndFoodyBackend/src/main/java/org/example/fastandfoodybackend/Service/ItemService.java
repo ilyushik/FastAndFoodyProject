@@ -27,6 +27,10 @@ public class ItemService {
         return itemListToItemDTO(itemRepository.findAll());
     }
 
+    public Item findItemById(int id) {
+        return itemRepository.findById(id).orElse(null);
+    }
+
     //find item by id(dto)
     public ItemDTO itemById(int id) {
         Item item = itemRepository.findById(id).orElse(null);

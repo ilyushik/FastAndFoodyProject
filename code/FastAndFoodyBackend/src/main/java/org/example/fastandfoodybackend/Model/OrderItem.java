@@ -34,6 +34,7 @@ public class OrderItem {
     public OrderItem() {
     }
 
+
     public OrderItem(int id, int amount, int total, Item itemId, Basket basket, Purchase purchase) {
         this.id = id;
         this.amount = amount;
