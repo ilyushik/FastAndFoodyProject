@@ -1,5 +1,6 @@
 package org.example.fastandfoodybackend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 
@@ -19,14 +20,17 @@ public class OrderItem {
     @Column(name = "total")
     private int total;
 
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     private Item itemId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "basket", referencedColumnName = "id")
     private Basket basket;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "purchase" , referencedColumnName = "id")
     private Purchase purchase;

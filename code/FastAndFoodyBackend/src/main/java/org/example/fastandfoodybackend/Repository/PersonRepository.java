@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PersonRepository  extends JpaRepository<Person, Integer> {
@@ -16,4 +17,8 @@ public interface PersonRepository  extends JpaRepository<Person, Integer> {
     public List<Person> findPersonByEmail(String email);
 
     public List<Person> findPersonByPhone(String phone);
+
+    public Optional<Person> findByEmail(String email);
+
+    public Optional<Person> findByUsername(String username);
 }
