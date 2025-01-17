@@ -26,18 +26,35 @@ export default function PopupOrderItem(props) {
             itemId: item.id,
             amount: countOfItems,
             total: total
-        }
+        };
 
-        // if user isn't authenticated
-        let items = JSON.parse(localStorage.getItem("items"))
+        let items = JSON.parse(localStorage.getItem("items"));
+
         if (!Array.isArray(items)) {
-            items = []
+            items = [];
         }
-        localStorage.setItem("items", JSON.stringify([...items, orderItem]));
 
-        props.close()
-        props.openSuccess()
-    }
+        let found = false;
+
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].itemId === orderItem.itemId) {
+                items[i].amount += countOfItems;
+                items[i].total *= items[i].amount;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            items.push(orderItem);
+        }
+
+        localStorage.setItem("items", JSON.stringify(items));
+
+        props.close();
+        props.openSuccess();
+    };
+
 
     return (
         <div onClick={e => e.stopPropagation()}>

@@ -22,11 +22,20 @@ export default function OrderItemComponent(props) {
         fetchItemHandler()
     }, [fetchItemHandler])
 
-    const removeItem = (item) => {
-        let items = JSON.parse(localStorage.getItem("items"));
-        items.splice(items.indexOf(item), 1);
+    const removeItem = () => {
+        let items = JSON.parse(localStorage.getItem("items")) || [];
+
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].itemId === props.item.itemId) {
+                console.log(`Item ${items[i].itemId} removed`);
+                items.splice(i, 1);
+                i--;
+            }
+        }
+
         localStorage.setItem("items", JSON.stringify(items));
-    }
+    };
+
 
     return (
         <div className="orderItemComponent" key={item.id}>
@@ -50,8 +59,8 @@ export default function OrderItemComponent(props) {
                 <p className="orderItemComponent-value">{props.item.total}$</p>
             </div>
 
-            <img src={basket} className="orderItemComponent-remove-icon" onClick={(item) => {
-                removeItem(item)
+            <img src={basket} className="orderItemComponent-remove-icon" onClick={() => {
+                removeItem()
                 props.reload()
             }}/>
         </div>
