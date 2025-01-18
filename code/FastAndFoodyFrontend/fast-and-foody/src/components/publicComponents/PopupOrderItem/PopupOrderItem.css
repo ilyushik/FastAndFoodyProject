@@ -134,3 +134,48 @@
     font-size: 25px;
     border-radius: 0 0 10px 10px;
 }
+
+@media screen and (max-width: 2000px) {
+    .popupOrderItem-image {
+        width: 40%;
+    }
+
+    .popupOrderItem-title-text,
+    .popupOrderItem-count-text,
+    .popupOrderItem-price-text {
+        font-size: 16px;
+        height: 5px;
+    }
+
+    .popupOrderItem-title-value,
+    .popupOrderItem-count-value,
+    .popupOrderItem-price-value {
+        font-size: 23px;
+    }
+    .popupOrderItem-price-value {
+        top: 15px
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .popupOrderItem-image {
+        width: 40%;
+    }
+
+    .popupOrderItem-title-text,
+    .popupOrderItem-count-text,
+    .popupOrderItem-price-text {
+        font-size: 15px;
+        height: 5px;
+    }
+
+    .popupOrderItem-title-value,
+    .popupOrderItem-count-value,
+    .popupOrderItem-price-value {
+        font-size: 21px;
+    }
+
+    .popupOrderItem-count-price-block {
+        width: 60%;
+    }
+}

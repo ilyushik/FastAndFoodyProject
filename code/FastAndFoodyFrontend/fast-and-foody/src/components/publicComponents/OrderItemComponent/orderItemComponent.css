@@ -25,6 +25,7 @@
     font-weight: 500;
     color: grey;
     font-family: 'Montserrat', sans-serif;
+    height: 10px;
 }
 
 .orderItemComponent-value {
@@ -37,4 +38,69 @@
 .orderItemComponent-remove-icon {
     width: 50px;
     height: 40px;
+}
+
+@media screen and (max-width: 2500px) {
+    .orderItemComponent-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: grey;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .orderItemComponent-value {
+        font-size: 23px;
+        font-weight: 600;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+@media screen and (max-width: 2300px) {
+    .orderItemComponent-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: grey;
+        font-family: 'Montserrat', sans-serif;
+        height: 5px;
+    }
+
+    .orderItemComponent-value {
+        font-size: 21px;
+        font-weight: 600;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /*.orderItemComponent-title {*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 500;*/
+    /*    color: grey;*/
+    /*    font-family: 'Montserrat', sans-serif;*/
+    /*    height: 5px;*/
+    /*}*/
+
+    /*.orderItemComponent-value {*/
+    /*    font-size: 21px;*/
+    /*    font-weight: 600;*/
+    /*    color: black;*/
+    /*    font-family: 'Montserrat', sans-serif;*/
+    /*}*/
+
+    .orderItemComponent-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: grey;
+        font-family: 'Montserrat', sans-serif;
+        height: 5px;
+    }
+
+    .orderItemComponent-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+    }
 }

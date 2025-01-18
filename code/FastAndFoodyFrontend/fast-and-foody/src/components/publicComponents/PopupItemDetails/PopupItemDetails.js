@@ -6,12 +6,14 @@ export default function PopupItemDetails(props) {
 
     return (
         <div>
-            <div className="back" onClick={(event) => { event.stopPropagation(); props.close() }}></div>
+            <div className="back" onClick={(event) => { event.stopPropagation();
+                props.close() }}></div>
 
 
             <div className="modal-justify">
                 <div className="modal-screen">
-                    <button className={`close-button`} onClick={(event) => { event.stopPropagation(); props.close() }}>&times;</button>
+                    <button className={`close-button`} onClick={(event) =>
+                    { event.stopPropagation(); props.close() }}>&times;</button>
 
                     <div className="itemDetails-block">
                         <p className="itemDetails-title">{item.itemName}</p>

@@ -69,3 +69,41 @@
     left: 0;
     border-radius: 0 0 10px 10px;
 }
+
+@media screen and (max-width: 2300px) {
+    .popupCart-list {
+        max-height: 50%;
+    }
+}
+
+@media screen and (max-width: 1900px) {
+    .popupCart-list {
+        max-height: 50%;
+    }
+
+    .popupCart {
+        width: 800px;
+        aspect-ratio: 1.5/1;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .popupCart {
+        top: 80px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .popupCart {
+        top: 80px;
+    }
+
+    .popupCart-list {
+        max-height: 50%;
+    }
+
+    .popupCart {
+        width: 500px;
+        aspect-ratio: 1.5/1;
+    }
+}

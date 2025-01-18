@@ -58,7 +58,8 @@ export default function PopupOrderItem(props) {
 
     return (
         <div onClick={e => e.stopPropagation()}>
-            <div className="back-order-item" onClick={(event) => { event.stopPropagation(); props.close() }}></div>
+            <div className="back-order-item" onClick={(event) => { event.stopPropagation();
+                props.close() }}></div>
 
 
             <div className="modal-justify-order-item">
@@ -66,7 +67,8 @@ export default function PopupOrderItem(props) {
                     <div className="modal-header">
                         <p className="popupOrderItem-title">Selected product</p>
 
-                        <button className={`close-button`} onClick={(event) => { event.stopPropagation(); props.close() }}>&times;</button>
+                        <button className={`close-button`} onClick={(event) =>
+                        { event.stopPropagation(); props.close() }}>&times;</button>
                     </div>
 
                     <div className="popupOrderItem-block">

@@ -82,6 +82,10 @@
 }
 
 @media screen and (max-width: 2200px) {
+    .modal-justify {
+        aspect-ratio: 1.5/1;
+    }
+
     .itemDetails-title {
         font-size: 30px;
         font-weight: 600;
@@ -110,9 +114,43 @@
     }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 2000px) {
+    .modal-justify {
+        aspect-ratio: 1.5/1;
+    }
+
+    .itemDetails-title {
+        font-size: 27px;
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .itemDetails-image {
+        width: 40%;
+        aspect-ratio: 1/1;
+        border-radius: 10px;
+    }
+
+    .itemDetails-text-price {
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .itemDetails-text-category {
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .itemDetails-text-description {
+        padding-bottom: 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
     .modal-justify {
         width: 60%;
+        aspect-ratio: 1.8/1;
     }
 
     .itemDetails-title {
