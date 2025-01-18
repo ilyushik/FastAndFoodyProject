@@ -2,7 +2,7 @@ package org.example.fastandfoodybackend.Security;
 
 public class AuthenticationRequest {
     private String username;
-    String password;
+    private String password;
 
     public AuthenticationRequest() {
     }
