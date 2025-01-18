@@ -56,11 +56,6 @@ CREATE TABLE IF NOT EXISTS person(
                                     image varchar(256)
     );
 
-CREATE TABLE IF NOT EXISTS basket (
-                                      id INT PRIMARY KEY AUTO_INCREMENT,
-                                      person_id INT REFERENCES person(id)
-    );
-
 CREATE TABLE IF NOT EXISTS city(
                                    id int PRIMARY KEY AUTO_INCREMENT,
                                    name VARCHAR(32) NOT NULL ,
@@ -94,7 +89,6 @@ CREATE TABLE IF NOT EXISTS purchase(
     );
 
 ALTER TABLE order_item ADD COLUMN purchase int references purchase(id);
-ALTER TABLE order_item ADD COLUMN basket int references basket(id);
 
 INSERT INTO category(category_name)
 VALUES ('Cold drinks'), ('Hot drinks'), ('Beef'), ('Pork'), ('Fish and chicken'), ('Desserts'), ('Breakfasts'), ('Fries and sauces');

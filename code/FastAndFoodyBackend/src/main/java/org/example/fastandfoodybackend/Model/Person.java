@@ -53,10 +53,6 @@ public class Person implements UserDetails {
     @Column(name = "image")
     private String image;
 
-    @Transient
-    @OneToMany(mappedBy = "person")
-    private List<Basket> baskets;
-
     @OneToOne(mappedBy = "adminId")
     private Restaurant restaurant;
 
@@ -66,7 +62,7 @@ public class Person implements UserDetails {
     public Person() {
     }
 
-    public Person(int id, String name, String surname, String email, String username, String personPassword, UserRole role, String image, List<Basket> baskets,
+    public Person(int id, String name, String surname, String email, String username, String personPassword, UserRole role, String image,
                   Restaurant restaurant, List<Purchase> purchases, String phone) {
         this.id = id;
         this.name = name;
@@ -76,7 +72,6 @@ public class Person implements UserDetails {
         this.personPassword = personPassword;
         this.role = role;
         this.image = image;
-        this.baskets = baskets;
         this.restaurant = restaurant;
         this.purchases = purchases;
         this.phone = phone;
@@ -144,14 +139,6 @@ public class Person implements UserDetails {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public List<Basket> getBaskets() {
-        return baskets;
-    }
-
-    public void setBasket(List<Basket> baskets) {
-        this.baskets = baskets;
     }
 
     public Restaurant getRestaurant() {

@@ -27,11 +27,6 @@ public class OrderItem {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "basket", referencedColumnName = "id")
-    private Basket basket;
-
-    @JsonIgnore
-    @ManyToOne
     @JoinColumn(name = "purchase" , referencedColumnName = "id")
     private Purchase purchase;
 
@@ -39,12 +34,11 @@ public class OrderItem {
     }
 
 
-    public OrderItem(int id, int amount, int total, Item itemId, Basket basket, Purchase purchase) {
+    public OrderItem(int id, int amount, int total, Item itemId, Purchase purchase) {
         this.id = id;
         this.amount = amount;
         this.total = total;
         this.itemId = itemId;
-        this.basket = basket;
         this.purchase = purchase;
     }
 
@@ -78,14 +72,6 @@ public class OrderItem {
 
     public void setItemId(Item itemId) {
         this.itemId = itemId;
-    }
-
-    public Basket getBasket() {
-        return basket;
-    }
-
-    public void setBasket(Basket basket) {
-        this.basket = basket;
     }
 
     public Purchase getPurchase() {
