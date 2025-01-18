@@ -9,7 +9,12 @@ export default function OrderItemComponent(props) {
 
     const fetchItemHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/item/${props.item.itemId}`, {});
+            const response = await axios.get(`http://localhost:8080/item/${props.item.itemId}`, {
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+            });
             console.log(response.data);
             console.log(props.item);
             setItem(response.data);
@@ -38,7 +43,7 @@ export default function OrderItemComponent(props) {
 
 
     return (
-        <div className="orderItemComponent" key={item.id}>
+        <div className="orderItemComponent" key={props.item.itemId}>
             <img src={item.image} className="orderItemComponent-image" />
 
             <div className="orderItemComponent-text">

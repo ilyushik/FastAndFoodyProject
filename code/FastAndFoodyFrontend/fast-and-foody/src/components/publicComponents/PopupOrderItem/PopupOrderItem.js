@@ -39,7 +39,7 @@ export default function PopupOrderItem(props) {
         for (let i = 0; i < items.length; i++) {
             if (items[i].itemId === orderItem.itemId) {
                 items[i].amount += countOfItems;
-                items[i].total *= items[i].amount;
+                items[i].total = items[i].amount * item.price;
                 found = true;
                 break;
             }

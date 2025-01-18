@@ -74,6 +74,11 @@ input::placeholder {
     color: #696969;
 }
 
+.loginInputError {
+    color: crimson;
+    margin-left: 25%;
+}
+
 .entranceView-block-info-form-button-block {
     width: 100%;
     display: flex;

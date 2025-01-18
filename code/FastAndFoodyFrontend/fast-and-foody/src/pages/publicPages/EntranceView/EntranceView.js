@@ -2,6 +2,8 @@ import "./EntranceView.css"
 
 import logo from "../../../images/logo_crop.png"
 import {useState} from "react";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function EntranceView() {
 
@@ -9,10 +11,14 @@ export default function EntranceView() {
 
     const [name,setName] = useState('')
     const [surname, setSurname] = useState('')
-    const [username, setUsername] = useState('')
+    const [usernameInput, setUsernameInput] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [passwordInput, setPasswordInput] = useState('')
+
+    const navigate = useNavigate()
+
+    const [error, setError] = useState({})
 
     const nameHandler = (e) => {
         setName(e.target.value)
@@ -23,7 +29,7 @@ export default function EntranceView() {
     }
 
     const usernameHandler = (e) => {
-        setUsername(e.target.value)
+        setUsernameInput(e.target.value)
     }
 
     const phoneHandler = (e) => {
@@ -35,7 +41,37 @@ export default function EntranceView() {
     }
 
     const passwordHandler = (e) => {
-        setPassword(e.target.value)
+        setPasswordInput(e.target.value)
+    }
+
+    const loginHandler = async (e) => {
+        e.preventDefault()
+
+        if (usernameInput.trim().length < 1) {
+            setError({username: 'Field should not be empty'})
+            return
+        }
+        if (passwordInput.trim().length < 1) {
+            setError({password: 'Field should not be empty'})
+            return
+        }
+
+        const loginData = {
+            username: usernameInput,
+            password: passwordInput,
+        }
+
+        console.log(loginData)
+
+        try {
+            const response = await axios.post(`http://localhost:8080/login`, loginData)
+            console.log(response.data)
+            localStorage.setItem("token", response.data.token)
+            navigate("/")
+        } catch (e) {
+            console.log(e.response?.data)
+            setError(e.response?.data)
+        }
     }
 
     return (
@@ -52,14 +88,16 @@ export default function EntranceView() {
                             <div className="entranceView-block-info-form">
                                 <p className="entranceView-block-info-form-title">Log in</p>
 
-                                <form style={{"width": "100%"}}>
+                                <form style={{"width": "100%"}} onSubmit={loginHandler}>
                                     <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={username} onChange={usernameHandler} />
+                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />
                                     </div>
+                                    {error?.username && (<p className="loginInputError">{error.username}</p>)}
 
                                     <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={password} onChange={passwordHandler} />
+                                        <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={passwordInput} onChange={passwordHandler} />
                                     </div>
+                                    {error?.password && (<p className="loginInputError">{error.password}</p>)}
 
                                     <div className="entranceView-block-info-form-button-block">
                                         <button className="entranceView-block-info-form-button" type="submit">Continue</button>
@@ -90,7 +128,7 @@ export default function EntranceView() {
                                     </div>
 
                                     <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={username} onChange={usernameHandler} />
+                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />
                                     </div>
 
                                     <div className="entranceView-block-info-form-input-block">
@@ -102,7 +140,7 @@ export default function EntranceView() {
                                     </div>
 
                                     <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={password} onChange={passwordHandler} />
+                                        <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={passwordInput} onChange={passwordHandler} />
                                     </div>
 
                                     <div className="entranceView-block-info-form-button-block">
@@ -122,7 +160,7 @@ export default function EntranceView() {
 
                                 <form style={{"width": "100%"}}>
                                     <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={username} onChange={usernameHandler} />
+                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />
                                     </div>
 
                                     <div className="entranceView-block-info-form-button-block">

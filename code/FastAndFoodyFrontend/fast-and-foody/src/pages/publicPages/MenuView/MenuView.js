@@ -9,7 +9,12 @@ export default function MenuView() {
 
     const fetchItemsHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/item`, {});
+            const response = await axios.get(`http://localhost:8080/item`, {
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+            });
             console.log(response.data);
             setItems(response.data);
         } catch (e) {

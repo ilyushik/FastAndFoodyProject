@@ -15,9 +15,16 @@ export default function UserInfoView() {
     const [activePurchases, setActivePurchases] = useState([]);
     const [finishedPurchases, setFinishedPurchases] = useState([]);
 
+    const navigate = useNavigate();
+
     const fetchUserHandle = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/my-info`, {})
+            const response = await axios.get(`http://localhost:8080/my-info`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
             console.log(response.data);
             setUser(response.data);
         } catch (e) {
@@ -27,7 +34,12 @@ export default function UserInfoView() {
 
     const fetchPurchasesHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/my-info/orders`, {})
+            const response = await axios.get(`http://localhost:8080/my-info/orders`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
             console.log(response.data);
             setPurchases([])
             setPurchases(response.data);
@@ -40,7 +52,12 @@ export default function UserInfoView() {
 
     const fetchActivePurchasesHandler = useCallback(async () => {
         try {
-            const response  = await axios.get(`http://localhost:8080/my-info/active-orders`, {})
+            const response  = await axios.get(`http://localhost:8080/my-info/active-orders`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
             setActivePurchases(response.data);
             console.log(response.data);
         } catch (e) {
@@ -50,7 +67,12 @@ export default function UserInfoView() {
 
     const fetchFinishedPurchasesHandler = useCallback(async () => {
         try {
-            const response  = await axios.get(`http://localhost:8080/my-info/finished-orders`, {})
+            const response  = await axios.get(`http://localhost:8080/my-info/finished-orders`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
             setFinishedPurchases(response.data);
             console.log(response.data);
         } catch (e) {
@@ -74,6 +96,11 @@ export default function UserInfoView() {
         fetchFinishedPurchasesHandler();
     }, [fetchFinishedPurchasesHandler]);
 
+    const logout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    }
+
     return (
         <Layout>
             <div className="userInfoView-container">
@@ -94,7 +121,7 @@ export default function UserInfoView() {
                             <button className="userInfoView-action-button" onClick={() => navigator('/my-info/edit')}>Edit profile</button>
                         </div>
                         <div className="userInfoView-action-button-block">
-                            <button className="userInfoView-action-button">Logout</button>
+                            <button className="userInfoView-action-button" onClick={logout}>Logout</button>
                         </div>
                         <div className="userInfoView-action-button-block">
                             <button className="userInfoView-action-button">Delete account</button>
