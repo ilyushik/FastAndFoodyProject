@@ -27,7 +27,9 @@ export default function PopupCart(props) {
     };
 
     const submitOrder = () => {
-        navigate("/order-form");
+        if (items?.length > 0) {
+            navigate("/order-form");
+        }
     }
 
     return (
@@ -47,7 +49,7 @@ export default function PopupCart(props) {
                     </div>
                 )}
 
-                <button className="popupCart-order-button" onClick={submitOrder}>Create order</button>
+                <button className={`popupCart-order-button ${items?.length < 1 ? 'disable' : ''}`} onClick={submitOrder}>Create order</button>
             </div>
         </div>
     );

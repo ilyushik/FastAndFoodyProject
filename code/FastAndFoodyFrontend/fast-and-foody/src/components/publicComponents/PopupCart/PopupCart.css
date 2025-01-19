@@ -70,6 +70,10 @@
     border-radius: 0 0 10px 10px;
 }
 
+.popupCart-order-button.disable {
+    background: #ffbf4c;
+}
+
 @media screen and (max-width: 2300px) {
     .popupCart-list {
         max-height: 50%;

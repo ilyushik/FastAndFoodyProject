@@ -44,3 +44,53 @@
     color: black;
     height: 10px;
 }
+
+@media screen and (max-width: 2600px) {
+    .addOrderFormItemComponent-name-title,
+    .addOrderFormItemComponent-amount-title,
+    .addOrderFormItemComponent-total-title {
+        font-size: 15px;
+    }
+
+    .addOrderFormItemComponent-name-value,
+    .addOrderFormItemComponent-amount-value,
+    .addOrderFormItemComponent-total-value {
+        font-size: 23px;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .addOrderFormItemComponent-name-title,
+    .addOrderFormItemComponent-amount-title,
+    .addOrderFormItemComponent-total-title {
+        font-size: 15px;
+    }
+
+    .addOrderFormItemComponent-name-value,
+    .addOrderFormItemComponent-amount-value,
+    .addOrderFormItemComponent-total-value {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .addOrderFormItemComponent-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .addOrderFormItemComponent-name-block,
+    .addOrderFormItemComponent-amount,
+    .addOrderFormItemComponent-total {
+        position: relative;
+        bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .addOrderFormItemComponent-name-value,
+    .addOrderFormItemComponent-amount-value,
+    .addOrderFormItemComponent-total-value {
+        font-size: 18px;
+    }
+}

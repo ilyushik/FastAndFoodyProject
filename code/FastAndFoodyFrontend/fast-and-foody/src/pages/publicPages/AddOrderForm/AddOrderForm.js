@@ -9,9 +9,9 @@ import Select from "react-select";
 export default function AddOrderForm() {
     const [items, setItems] = useState([]);
     const [deliveryWay, setDeliveryWay] = useState([]);
-    const [selectedDeliveryWay, setSelectedDeliveryWay] = useState('Delivery');
+    const [selectedDeliveryWay, setSelectedDeliveryWay] = useState(null);
     const [paymentWay, setPaymentWay] = useState([]);
-    const [selectedPaymentWay, setSelectedPaymentWay] = useState('');
+    const [selectedPaymentWay, setSelectedPaymentWay] = useState(null);
 
     const [totalPrice, setTotalPrice] = useState(0);
 
