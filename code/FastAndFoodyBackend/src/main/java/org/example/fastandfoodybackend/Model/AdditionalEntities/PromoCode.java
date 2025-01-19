@@ -1,5 +1,6 @@
 package org.example.fastandfoodybackend.Model.AdditionalEntities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import org.example.fastandfoodybackend.Model.Purchase;
@@ -19,6 +20,7 @@ public class PromoCode {
     @Column(name = "code")
     private String code;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "promoCode")
     private List<Purchase> purchases;
 

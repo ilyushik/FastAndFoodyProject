@@ -94,7 +94,7 @@ INSERT INTO category(category_name)
 VALUES ('Cold drinks'), ('Hot drinks'), ('Beef'), ('Pork'), ('Fish and chicken'), ('Desserts'), ('Breakfasts'), ('Fries and sauces');
 
 INSERT INTO delivery_way(way)
-VALUES ('Delivery'), ('PickUp');
+VALUES ('Delivery'), ('Pick up');
 
 INSERT INTO status(status_name)
 VALUES ('In progress'), ('Delivered'), ('On way'), ('Canceled');

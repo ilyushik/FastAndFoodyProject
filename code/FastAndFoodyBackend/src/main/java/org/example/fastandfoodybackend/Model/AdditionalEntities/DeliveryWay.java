@@ -1,5 +1,6 @@
 package org.example.fastandfoodybackend.Model.AdditionalEntities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class DeliveryWay {
     @Column(name = "way")
     private String way;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "deliveryWay")
     private List<Purchase> purchases;
 
