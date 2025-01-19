@@ -1,0 +1,83 @@
+.addOrderForm-background {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+}
+
+.addOrderForm-container {
+    padding: 30px 5%;
+    width: 100%;
+}
+
+.addOrderForm-restaurantInfo,
+.addOrderForm-listOfItemsInfo,
+.addOrderForm-delivery-way,
+.addOrderForm-payment-way{
+    padding-bottom: 30px;
+}
+
+.addOrderForm-listOfItemsInfo {
+    width: 40%;
+}
+
+.addOrderForm-restaurantInfo-title,
+.addOrderForm-listOfItemsInfo-title,
+.addOrderForm-delivery-way-title,
+.addOrderForm-payment-way-title {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    height: 5px;
+    width: 100%;
+}
+
+.addOrderForm-restaurantInfo-value {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    height: 10px;
+    width: 100%;
+}
+
+.addOrderForm-listOfItemsInfo-values {
+    max-height: 35vh;
+    overflow-y: auto;
+    scrollbar-color: #FFA00D transparent;
+}
+
+.addOrderForm-delivery-way,
+.addOrderForm-payment-way {
+    width: 100%;
+}
+
+.addOrderForm-delivery-way-title,
+.addOrderForm-payment-way-title {
+    height: 20px;
+}
+
+.addOrderForm-delivery-way-select,
+.addOrderForm-payment-way-select {
+    width: 20%;
+}
+
+.addOrderForm-confirm-order-title {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+.addOrderForm-submit-button {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    background: #FFA00D;
+    padding: 15px 25px;
+}
+

@@ -1,0 +1,46 @@
+.addOrderFormItemComponent-container {
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    gap: 3%;
+}
+
+.addOrderFormItemComponent-image-name {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.addOrderFormItemComponent-image {
+    width: 85px;
+    height: 85px;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+}
+
+.addOrderFormItemComponent-name-block {}
+
+.addOrderFormItemComponent-amount,
+.addOrderFormItemComponent-total {
+    width: 30%;
+}
+
+.addOrderFormItemComponent-name-title,
+.addOrderFormItemComponent-amount-title,
+.addOrderFormItemComponent-total-title {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    height: 5px;
+}
+
+.addOrderFormItemComponent-name-value,
+.addOrderFormItemComponent-amount-value,
+.addOrderFormItemComponent-total-value {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    height: 10px;
+}

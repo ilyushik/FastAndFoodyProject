@@ -1,10 +1,13 @@
 import "./PopupCart.css"
 import OrderItemComponent from "../OrderItemComponent/orderItemComponent";
 import { useCallback, useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function PopupCart(props) {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
+
+    const navigate = useNavigate();
 
     const fetchOrderItemsHandler = useCallback(() => {
         let storedItems = JSON.parse(localStorage.getItem("items")) || [];
@@ -23,6 +26,10 @@ export default function PopupCart(props) {
         setTotal(0);
     };
 
+    const submitOrder = () => {
+        navigate("/order-form");
+    }
+
     return (
         <div className="popupCart">
             <div className="popupCart-block">
@@ -40,7 +47,7 @@ export default function PopupCart(props) {
                     </div>
                 )}
 
-                <button className="popupCart-order-button">Create order</button>
+                <button className="popupCart-order-button" onClick={submitOrder}>Create order</button>
             </div>
         </div>
     );

@@ -1,10 +1,9 @@
-body {
-    overflow-y: scroll;
-}
-
 .menuView-block {
     display: flex;
     width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
     justify-content: center;
     padding: 20px;
 }
@@ -20,4 +19,8 @@ body {
     gap: 20px;
     padding-top: 10px;
     border-top: white 1px solid;
+}
+
+.menu-padding {
+    height: 230px;
 }

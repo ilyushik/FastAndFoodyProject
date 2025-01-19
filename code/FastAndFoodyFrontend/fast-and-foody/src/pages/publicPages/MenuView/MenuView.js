@@ -53,6 +53,7 @@ export default function MenuView() {
                             </div>
                         </div>
                     ))}
+                    <div className="menu-padding"></div>
                 </div>
             </div>
         </Layout>

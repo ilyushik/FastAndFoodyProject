@@ -1,9 +1,11 @@
-body {
-    overflow-y: hidden;
-}
+/*body {*/
+/*    overflow-y: hidden;*/
+/*}*/
 
 .Layout {
     height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .Layout-background {
@@ -22,18 +24,19 @@ body {
 }
 
 .Layout-container {
+    height: 100%;
 }
 
 .Layout-block {
     display: flex;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
 .Layout-content {
     flex: 1;
     height: 100%;
-    margin-bottom: 130px;
     padding: 0 15%;
 }
 
