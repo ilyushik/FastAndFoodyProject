@@ -17,7 +17,7 @@ public class PurchaseDTO {
 
     private String deliveryWay;
 
-    private int personId;
+    private Integer personId;
 
     private String address;
 

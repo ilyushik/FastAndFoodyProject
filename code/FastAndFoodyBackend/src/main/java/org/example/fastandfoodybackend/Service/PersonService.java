@@ -24,7 +24,7 @@ public class PersonService {
     List<PurchaseDTO> purchaseToDTO(List<Purchase> purchases) {
         return purchases.stream().map(p -> {
             PurchaseDTO purchaseDTO = new PurchaseDTO(p.getId(), p.getWish(), p.getRestaurantId().getId(), p.getPaymentWay().getWay(),
-                    p.getPromoCode().getCode(), p.getStatus().getStatus(), p.getDeliveryWay().getWay(), p.getPersonId().getId(), p.getAddress(),
+                    p.getPromoCode() != null ? p.getPromoCode().getCode() : null, p.getStatus().getStatus(), p.getDeliveryWay().getWay(), p.getPersonId().getId(), p.getAddress(),
                     p.getDate(), p.getSum());
             return purchaseDTO;
         }).toList();
@@ -88,6 +88,16 @@ public class PersonService {
         purchases = purchases.stream().filter(p -> p.getStatus().getStatus().equals("Canceled") || p.getStatus().getStatus().equals("Delivered")).toList();
 
         return purchaseToDTO(purchases);
+    }
+
+    public PurchaseDTO findPurchaseById(int id) {
+        Purchase purchase = purchaseRepository.findById(id).orElse(null);
+        PurchaseDTO purchaseDTO = new PurchaseDTO(purchase.getId(), purchase.getWish(), purchase.getRestaurantId().getId(),
+                purchase.getPaymentWay().getWay(), purchase.getPromoCode() != null ? purchase.getPromoCode().getCode() : null,
+                purchase.getStatus().getStatus(), purchase.getDeliveryWay().getWay(), purchase.getPersonId() !=null ? purchase.getPersonId().getId() : null,
+                purchase.getAddress(), purchase.getDate(), purchase.getSum());
+
+        return purchaseDTO;
     }
 
     // update personal info

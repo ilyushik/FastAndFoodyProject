@@ -1,6 +1,7 @@
 package org.example.fastandfoodybackend.Service;
 
 import org.example.fastandfoodybackend.DTO.OrderItemDTO;
+import org.example.fastandfoodybackend.DTO.PurchaseDTO;
 import org.example.fastandfoodybackend.DTO.PurchaseRequestDTO;
 import org.example.fastandfoodybackend.Model.Purchase;
 import org.example.fastandfoodybackend.Repository.*;
@@ -41,11 +42,7 @@ public class PurchaseService {
         } else {
             purchase.setPersonId(null);
         }
-        if (purchaseDTO.getEmail() != null) {
-            purchase.setEmail(purchaseDTO.getEmail());
-        } else {
-            purchase.setEmail(null);
-        }
+        purchase.setEmail(purchaseDTO.getEmail());
         purchase.setRestaurantId(restaurantRepository.findById(purchaseDTO.getRestaurantId()).orElse(null));
         purchase.setSum(purchaseDTO.getTotal());
         purchase.setDate(LocalDateTime.now());
