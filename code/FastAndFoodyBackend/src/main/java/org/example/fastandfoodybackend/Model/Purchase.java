@@ -51,6 +51,9 @@ public class Purchase {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "date")
     private LocalDateTime date;
 
@@ -170,5 +173,13 @@ public class Purchase {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -1,6 +1,7 @@
 package org.example.fastandfoodybackend.Service;
 
 import org.example.fastandfoodybackend.DTO.RestaurantDTO;
+import org.example.fastandfoodybackend.Model.Restaurant;
 import org.example.fastandfoodybackend.Repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,13 @@ public class RestaurantService {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
+
+    public RestaurantDTO convertRestaurantToRestaurantDto(Restaurant restaurant) {
+        RestaurantDTO restaurantDTO = new RestaurantDTO(restaurant.getId(), restaurant.getAddress(), restaurant.getLatitude(),
+                restaurant.getLongitude(), restaurant.getCityId().getName(), restaurant.getPhone(), restaurant.getEmail());
+
+        return restaurantDTO;
+    }
 
     public List<RestaurantDTO> allRestaurantsDTO() {
         return restaurantRepository.findAll().stream().map(r->{
@@ -33,5 +41,12 @@ public class RestaurantService {
         allRestaurantsDTO = allRestaurantsDTO.stream().filter(r->r.getCity().equals(city)).toList();
 
         return allRestaurantsDTO;
+    }
+
+    public RestaurantDTO findRestaurantById(int id) {
+        Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
+
+        assert restaurant != null;
+        return convertRestaurantToRestaurantDto(restaurant);
     }
 }

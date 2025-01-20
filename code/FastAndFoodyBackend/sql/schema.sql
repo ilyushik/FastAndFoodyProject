@@ -85,7 +85,8 @@ CREATE TABLE IF NOT EXISTS purchase(
                                     person_id int REFERENCES person(id),
                                     address VARCHAR(64),
                                     date timestamp NOT NULL,
-                                    sum INT NOT NULL
+                                    sum INT NOT NULL,
+                                    email varchar(60)
     );
 
 ALTER TABLE order_item ADD COLUMN purchase int references purchase(id);

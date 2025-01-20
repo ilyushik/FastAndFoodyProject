@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PaymentWayRepository  extends JpaRepository<PaymentWay, Integer> {
+
+    public PaymentWay findByWay(String way);
 }
