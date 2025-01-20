@@ -13,10 +13,13 @@
 }
 
 .addOrderForm-restaurantInfo,
-.addOrderForm-listOfItemsInfo,
-.addOrderForm-delivery-way,
-.addOrderForm-payment-way{
+.addOrderForm-listOfItemsInfo {
     padding-bottom: 30px;
+}
+
+.addOrderForm-delivery-way,
+.addOrderForm-payment-way {
+    padding-top: 30px;
 }
 
 .addOrderForm-listOfItemsInfo {
@@ -26,7 +29,11 @@
 .addOrderForm-restaurantInfo-title,
 .addOrderForm-listOfItemsInfo-title,
 .addOrderForm-delivery-way-title,
-.addOrderForm-payment-way-title {
+.addOrderForm-payment-way-title,
+.addOrderForm-address-title,
+.addOrderForm-email-title,
+.addOrderForm-wish-title,
+.addOrderForm-promocode-title {
     font-size: 18px;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
@@ -51,18 +58,61 @@
 }
 
 .addOrderForm-delivery-way,
-.addOrderForm-payment-way {
+.addOrderForm-payment-way,
+.addOrderForm-address-block,
+.addOrderForm-email-block,
+.addOrderForm-wish-block,
+.addOrderForm-promocode-block  {
     width: 100%;
 }
 
 .addOrderForm-delivery-way-title,
-.addOrderForm-payment-way-title {
+.addOrderForm-payment-way-title,
+.addOrderForm-address-title,
+.addOrderForm-email-title,
+.addOrderForm-wish-title,
+.addOrderForm-promocode-title {
     height: 20px;
 }
 
 .addOrderForm-delivery-way-select,
 .addOrderForm-payment-way-select {
     width: 20%;
+}
+
+.addOrderForm-address-block,
+.addOrderForm-wish-block,
+.addOrderForm-promocode-block {
+    padding-top: 20px;
+}
+
+.addOrderForm-address-input,
+.addOrderForm-email-input,
+.addOrderForm-promocode-input {
+    width: 28%;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 8px 10px;
+}
+
+.addOrderForm-address-input::placeholder,
+.addOrderForm-wish-input::placeholder,
+.addOrderForm-promocode-input::placeholder {
+    color: grey;
+}
+
+.addOrderForm-wish-input {
+    width: 28%;
+    aspect-ratio: 1.5/ 1;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 8px 10px;
 }
 
 .addOrderForm-confirm-order-title {

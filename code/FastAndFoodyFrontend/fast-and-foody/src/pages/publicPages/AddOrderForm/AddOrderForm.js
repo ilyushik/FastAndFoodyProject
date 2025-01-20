@@ -5,6 +5,7 @@ import axios from "axios";
 import AddOrderFormItemComponent
     from "../../../components/publicComponents/AddOrderFormItemComponent/AddOrderFormItemComponent";
 import Select from "react-select";
+import {useNavigate} from "react-router-dom";
 
 export default function AddOrderForm() {
     const [items, setItems] = useState([]);
@@ -13,7 +14,37 @@ export default function AddOrderForm() {
     const [paymentWay, setPaymentWay] = useState([]);
     const [selectedPaymentWay, setSelectedPaymentWay] = useState(null);
 
+    const [loadedRestaurant, setLoadedRestaurant] = useState({});
+
     const [totalPrice, setTotalPrice] = useState(0);
+
+    const [email, setEmail] = useState("");
+
+    const [address, setAddress] = useState("");
+
+    const [wish, setWish] = useState("");
+
+    const [promoCode, setPromoCode] = useState("");
+
+    const [user, setUser] = useState({});
+
+    const navigate = useNavigate();
+
+    const [error, setError] = useState({});
+
+    const fetchRestaurantHandler = useCallback(async () => {
+
+        const purchase = JSON.parse(localStorage.getItem("purchase"));
+
+        try {
+            const response =  await axios.get
+            (`${process.env.REACT_APP_BACKEND_LINK}/restaurant/${purchase.restaurantId}`)
+            console.log(response.data)
+            setLoadedRestaurant(response.data)
+        } catch (e) {
+            console.log(e.response?.data)
+        }
+    }, [])
 
     const fetchItemsHandler = useCallback(() => {
         const loadedItems = JSON.parse(localStorage.getItem("items") || "[]");
@@ -26,7 +57,8 @@ export default function AddOrderForm() {
 
     const fetchDeliveryWayHandler = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/additional/delivery-way`);
+            const response = await axios.get
+            (`${process.env.REACT_APP_BACKEND_LINK}/additional/delivery-way`);
 
             const updatedDeliveryWays = response.data.map(item => ({
                 value: item.way,
@@ -41,7 +73,8 @@ export default function AddOrderForm() {
 
     const fetchPaymentWayHandler = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/additional/payment-way`);
+            const response = await axios.get
+            (`${process.env.REACT_APP_BACKEND_LINK}/additional/payment-way`);
 
             const updatedPaymentWays = response.data.map(item => ({
                 value: item.way,
@@ -53,6 +86,21 @@ export default function AddOrderForm() {
             console.log(e.response.data)
         }
     }
+
+    const fetchUserDataHandler = useCallback(async () => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+            console.log(response.data)
+            setUser(response.data);
+        } catch (e) {
+            console.log('user not found');
+        }
+    }, [])
 
     useEffect(() => {
         fetchItemsHandler();
@@ -66,6 +114,16 @@ export default function AddOrderForm() {
         fetchPaymentWayHandler();
     }, []);
 
+    useEffect(() => {
+        fetchRestaurantHandler()
+    }, [fetchRestaurantHandler])
+
+    useEffect(() => {
+        if (localStorage.getItem("token") !== null) {
+            fetchUserDataHandler()
+        }
+    }, [fetchUserDataHandler])
+
     const handleDeliveryWayChange = (selectedOption) => {
         setSelectedDeliveryWay(selectedOption);
         console.log("Selected delivery way:", selectedOption);
@@ -76,14 +134,55 @@ export default function AddOrderForm() {
         console.log("Selected payment way:", selectedOption);
     };
 
+    const submitData = async () => {
+
+        if (selectedDeliveryWay === null) {
+            setError({deliveryWay: "Field can not be empty"})
+            return
+        }
+        if (selectedPaymentWay === null) {
+            setError({paymenWay: "Field can not be empty"})
+            return
+        }
+
+        const purchase = JSON.parse(localStorage.getItem("purchase"));
+
+        purchase.wish = wish
+        purchase.paymentWay = selectedPaymentWay.value
+        purchase.deliveryWay = selectedDeliveryWay?.value
+        purchase.personId = localStorage.getItem("token") !== null ? user.id : null
+        purchase.email = localStorage.getItem("token") === null ?  email : null
+        if (email.trim().length < 1) {
+            setError({email: "Field cannot be empty"})
+            return
+        }
+
+        purchase.items = JSON.parse(localStorage.getItem("items"));
+        purchase.address = address
+        purchase.total = totalPrice
+
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/purchase/add`,
+                purchase)
+            console.log(response.data)
+            console.log("purchase", purchase)
+            localStorage.removeItem("purchase");
+            localStorage.removeItem("items")
+            navigate("/")
+        } catch (e) {
+            console.log(e.response.data)
+            setError(e.response.data)
+        }
+    }
+
     return (
         <Layout>
             <div className="addOrderForm-background">
                 <div className="addOrderForm-container">
                     <div className="addOrderForm-restaurantInfo">
                         <p className="addOrderForm-restaurantInfo-title">Information about restaurant</p>
-                        <p className="addOrderForm-restaurantInfo-value">Restaurant №1</p>
-                        <p className="addOrderForm-restaurantInfo-value">Miru av. 123a</p>
+                        <p className="addOrderForm-restaurantInfo-value">Restaurant №{loadedRestaurant?.id}</p>
+                        <p className="addOrderForm-restaurantInfo-value">{loadedRestaurant?.address}</p>
                     </div>
 
                     <div className="addOrderForm-listOfItemsInfo">
@@ -107,6 +206,20 @@ export default function AddOrderForm() {
                             isClearable
                         />
                     </div>
+                    {error.deliveryWay && (<p>{error.deliveryWay}</p>)}
+
+                    {selectedDeliveryWay?.value === 'Delivery' && (
+                        <>
+                            <div className="addOrderForm-address-block">
+                                <p className="addOrderForm-address-title">Address</p>
+                                <input value={address} type="text"
+                                       onChange={(e) => setAddress(e.target.value)}
+                                       className="addOrderForm-address-input"
+                                       placeholder="Address"/>
+                            </div>
+                            {error.address && (<p>{error.address}</p>)}
+                        </>
+                    )}
 
                     <div className="addOrderForm-payment-way">
                         <p className="addOrderForm-payment-way-title">Payment way</p>
@@ -120,11 +233,41 @@ export default function AddOrderForm() {
                             isClearable
                         />
                     </div>
+                    {error.paymentWay && (<p>{error.paymentWay}</p>)}
+
+                    {localStorage.getItem('token') === null && (
+                        <>
+                            <div className="addOrderForm-email-block">
+                                <p className="addOrderForm-email-title">Email</p>
+                                <input value={email} type="email"
+                                       onChange={(e) => setEmail(e.target.value)}
+                                       className="addOrderForm-email-input"
+                                       placeholder="Email"/>
+                            </div>
+                            {error.email && (<p>{error.email}</p>)}
+                        </>
+                    )}
+
+                    <div className="addOrderForm-promocode-block">
+                        <p className="addOrderForm-promocode-title">Promo code</p>
+                        <input value={promoCode} type="text"
+                               onChange={(e) => setPromoCode(e.target.value)}
+                               className="addOrderForm-promocode-input"
+                               placeholder="Promo code"/>
+                    </div>
+
+                    <div className="addOrderForm-wish-block">
+                        <p className="addOrderForm-wish-title">Wish</p>
+                        <textarea value={wish}
+                               onChange={(e) => setWish(e.target.value)}
+                               className="addOrderForm-wish-input"
+                               placeholder="Wish"/>
+                    </div>
 
                     <div className="addOrderForm-confirm-order">
                         <p className="addOrderForm-confirm-order-title">Order total: {totalPrice}$</p>
 
-                        <button className="addOrderForm-submit-button">Submit order</button>
+                        <button className="addOrderForm-submit-button" onClick={submitData}>Submit order</button>
                     </div>
                 </div>
             </div>
