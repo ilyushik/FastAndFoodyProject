@@ -26,7 +26,7 @@ export default function AddOrderForm() {
 
     const fetchDeliveryWayHandler = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/additional/delivery-way`);
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/additional/delivery-way`);
 
             const updatedDeliveryWays = response.data.map(item => ({
                 value: item.way,
@@ -41,7 +41,7 @@ export default function AddOrderForm() {
 
     const fetchPaymentWayHandler = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/additional/payment-way`);
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/additional/payment-way`);
 
             const updatedPaymentWays = response.data.map(item => ({
                 value: item.way,

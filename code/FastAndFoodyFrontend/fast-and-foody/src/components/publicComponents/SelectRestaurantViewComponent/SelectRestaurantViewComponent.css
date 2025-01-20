@@ -1,0 +1,22 @@
+.selectRestaurantViewComponent-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: white solid 2px;
+    width: 95%;
+}
+
+.selectRestaurantView-restaurant-number-address {}
+
+.selectRestaurantViewComponent-titles {
+    color: white;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+
+.selectRestaurantViewComponent-image {
+    height: 50px;
+    width: 50px;
+}

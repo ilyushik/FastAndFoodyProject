@@ -64,7 +64,7 @@ export default function EntranceView() {
         console.log(loginData)
 
         try {
-            const response = await axios.post(`http://localhost:8080/login`, loginData)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/login`, loginData)
             console.log(response.data)
             localStorage.setItem("token", response.data.token)
             navigate("/")

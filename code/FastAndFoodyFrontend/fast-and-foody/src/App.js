@@ -7,6 +7,7 @@ import MenuView from "./pages/publicPages/MenuView/MenuView";
 import AboutUsView from "./pages/publicPages/AboutUsView/AboutUsView";
 import ContactsView from "./pages/publicPages/ContactsView/ContactsView";
 import AddOrderForm from "./pages/publicPages/AddOrderForm/AddOrderForm";
+import SelectRestaurantView from "./pages/publicPages/SelectRestaurantView/SelectRestaurantView";
 
 
 const isAuthenticated = () => {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/menu" element={<MenuView/>}/>
         <Route path="/about-us" element={<AboutUsView/>}/>
         <Route path="/contacts" element={<ContactsView/>}/>
+        <Route path="/select-restaurant" element={<SelectRestaurantView/>}/>
         <Route path="/order-form" element={<AddOrderForm/>}/>
     </Routes>
   );

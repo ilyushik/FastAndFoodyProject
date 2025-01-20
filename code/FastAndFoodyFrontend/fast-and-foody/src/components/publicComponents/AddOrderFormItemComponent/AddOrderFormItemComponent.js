@@ -10,7 +10,7 @@ export default function AddOrderFormItemComponent(props) {
 
     const fetchItemHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/item/${item.itemId}`, {})
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/item/${item.itemId}`, {})
             console.log(response.data);
             setLoadedItem(response.data);
         } catch (e) {

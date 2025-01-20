@@ -9,7 +9,7 @@ export default function OrderItemComponent(props) {
 
     const fetchItemHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/item/${props.item.itemId}`, {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/item/${props.item.itemId}`, {
                 // headers: {
                 //     'Content-Type': 'application/json',
                 //     'Authorization': `Bearer ${localStorage.getItem("token")}`

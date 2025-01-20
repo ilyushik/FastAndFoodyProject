@@ -28,7 +28,7 @@ export default function PopupCart(props) {
 
     const submitOrder = () => {
         if (items?.length > 0) {
-            navigate("/order-form");
+            navigate("/select-restaurant");
         }
     }
 

@@ -23,7 +23,7 @@ export default function UserEditInfoView() {
 
     const fetchUserHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/my-info`, {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -83,7 +83,7 @@ export default function UserEditInfoView() {
         }
 
         try {
-            const response = await axios.post(`http://localhost:8080/my-info/edit`, updatedData,
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/my-info/edit`, updatedData,
                 {
                     headers: {
                         'Content-Type': 'application/json',

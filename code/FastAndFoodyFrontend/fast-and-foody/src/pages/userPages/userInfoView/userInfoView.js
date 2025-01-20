@@ -19,7 +19,7 @@ export default function UserInfoView() {
 
     const fetchUserHandle = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/my-info`, {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -34,7 +34,7 @@ export default function UserInfoView() {
 
     const fetchPurchasesHandler = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/my-info/orders`, {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info/orders`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -52,7 +52,7 @@ export default function UserInfoView() {
 
     const fetchActivePurchasesHandler = useCallback(async () => {
         try {
-            const response  = await axios.get(`http://localhost:8080/my-info/active-orders`, {
+            const response  = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info/active-orders`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -67,7 +67,7 @@ export default function UserInfoView() {
 
     const fetchFinishedPurchasesHandler = useCallback(async () => {
         try {
-            const response  = await axios.get(`http://localhost:8080/my-info/finished-orders`, {
+            const response  = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info/finished-orders`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
