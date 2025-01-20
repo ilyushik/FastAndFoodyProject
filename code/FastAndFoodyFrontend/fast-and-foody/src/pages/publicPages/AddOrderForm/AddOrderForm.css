@@ -133,6 +133,11 @@
     padding: 15px 25px;
 }
 
+.addOrderForm-error {
+    color: red;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 2450px) {
     .addOrderForm-listOfItemsInfo {
         width: 50%;

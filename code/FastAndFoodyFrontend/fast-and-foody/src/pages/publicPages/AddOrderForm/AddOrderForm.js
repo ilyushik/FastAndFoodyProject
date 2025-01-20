@@ -141,18 +141,23 @@ export default function AddOrderForm() {
             return
         }
         if (selectedPaymentWay === null) {
-            setError({paymenWay: "Field can not be empty"})
+            setError({paymentWay: "Field can not be empty"})
             return
         }
 
         const purchase = JSON.parse(localStorage.getItem("purchase"));
 
         purchase.wish = wish
-        purchase.paymentWay = selectedPaymentWay.value
+        purchase.paymentWay = selectedPaymentWay?.value
         purchase.deliveryWay = selectedDeliveryWay?.value
-        purchase.personId = localStorage.getItem("token") !== null ? user.id : null
-        purchase.email = localStorage.getItem("token") === null ?  email : null
-        if (email.trim().length < 1) {
+        if (localStorage.getItem("token")) {
+            purchase.personId = user.id
+            purchase.email = null
+        } else {
+            purchase.personId = null
+            purchase.email = email
+        }
+        if (localStorage.getItem('token') === null && email.trim().length < 1) {
             setError({email: "Field cannot be empty"})
             return
         }
@@ -160,6 +165,8 @@ export default function AddOrderForm() {
         purchase.items = JSON.parse(localStorage.getItem("items"));
         purchase.address = address
         purchase.total = totalPrice
+
+        console.log(purchase)
 
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/purchase/add`,
@@ -206,7 +213,7 @@ export default function AddOrderForm() {
                             isClearable
                         />
                     </div>
-                    {error.deliveryWay && (<p>{error.deliveryWay}</p>)}
+                    {error.deliveryWay && (<p className="addOrderForm-error">{error.deliveryWay}</p>)}
 
                     {selectedDeliveryWay?.value === 'Delivery' && (
                         <>
@@ -217,7 +224,7 @@ export default function AddOrderForm() {
                                        className="addOrderForm-address-input"
                                        placeholder="Address"/>
                             </div>
-                            {error.address && (<p>{error.address}</p>)}
+                            {error.address && (<p className="addOrderForm-error">{error.address}</p>)}
                         </>
                     )}
 
@@ -233,7 +240,7 @@ export default function AddOrderForm() {
                             isClearable
                         />
                     </div>
-                    {error.paymentWay && (<p>{error.paymentWay}</p>)}
+                    {error.paymentWay && (<p className="addOrderForm-error">{error.paymentWay}</p>)}
 
                     {localStorage.getItem('token') === null && (
                         <>
@@ -244,7 +251,7 @@ export default function AddOrderForm() {
                                        className="addOrderForm-email-input"
                                        placeholder="Email"/>
                             </div>
-                            {error.email && (<p>{error.email}</p>)}
+                            {error.email && (<p className="addOrderForm-error">{error.email}</p>)}
                         </>
                     )}
 
