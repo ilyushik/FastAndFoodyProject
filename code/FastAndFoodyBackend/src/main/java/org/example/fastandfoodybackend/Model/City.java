@@ -1,5 +1,6 @@
 package org.example.fastandfoodybackend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 
@@ -24,6 +25,7 @@ public class City {
     @Column(name = "latitude")
     private double latitude;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cityId")
     private List<Restaurant> restaurants;
 
