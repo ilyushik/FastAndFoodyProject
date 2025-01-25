@@ -85,7 +85,8 @@ CREATE TABLE IF NOT EXISTS purchase(
                                     person_id int REFERENCES person(id),
                                     address VARCHAR(64),
                                     date timestamp NOT NULL,
-                                    sum INT NOT NULL
+                                    sum INT NOT NULL,
+                                    email varchar(60)
     );
 
 ALTER TABLE order_item ADD COLUMN purchase int references purchase(id);
@@ -94,7 +95,7 @@ INSERT INTO category(category_name)
 VALUES ('Cold drinks'), ('Hot drinks'), ('Beef'), ('Pork'), ('Fish and chicken'), ('Desserts'), ('Breakfasts'), ('Fries and sauces');
 
 INSERT INTO delivery_way(way)
-VALUES ('Delivery'), ('PickUp');
+VALUES ('Delivery'), ('Pick up');
 
 INSERT INTO status(status_name)
 VALUES ('In progress'), ('Delivered'), ('On way'), ('Canceled');
@@ -151,31 +152,32 @@ INSERT INTO person(name, surname, phone, email, username, person_password, perso
                                                                                                    ('Oksana', 'Bilich', '+380654321098', 'oksana.bilich@example.com', 'oksana_bilich', '44444424', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face1.png?alt=media&token=16531758-4933-487c-bf2a-8a027acf307a'),
                                                                                                    ('Andriy', 'Petrov', '+380543210987', 'andriy.petrov@example.com', 'andriy_petrov', '55555535', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face2.png?alt=media&token=00b3ff76-f272-4fde-a6ad-07f83088d115');
 
-INSERT INTO city(name, longitude, latitude) VALUES
-                                                ('Mariupol', 47.104500, 37.543761),
-                                                ('Chernigiv', 51.503600, 31.286362),
-                                                ('Zaporizhzhya', 47.830958, 35.167202),
-                                                ('Kiyv', 50.442673, 30.490800),
-                                                ('Dnipro', 48.473107, 35.002404);
+INSERT INTO city(name, latitude, longitude) VALUES
+                                                ('Paris', 48.856613, 2.352222),
+                                                ('Berlin', 52.520008, 13.404954),
+                                                ('Rome', 41.902782, 12.496366),
+                                                ('Madrid', 40.416775, -3.703790),
+                                                ('Vienna', 48.208174, 16.373819);
 
-INSERT INTO city(name, longitude, latitude) VALUES
-                                                ('Lviv', 49.839683, 24.029717),
-                                                ('Odesa', 46.482526, 30.723309),
-                                                ('Kharkiv', 49.9935, 36.2304),
-                                                ('Ternopil', 49.5535, 25.5948),
-                                                ('Ivano-Frankivsk', 48.9226, 24.7111),
-                                                ('Cherkasi', 49.4444, 32.0595),
-                                                ('Zhitomir', 50.2633, 28.6587),
-                                                ('Uzhgorod', 48.6208, 22.2879),
-                                                ('Rivne', 50.6199, 26.2516),
-                                                ('Sumi', 50.9077, 34.7981);
+INSERT INTO city(name, latitude, longitude) VALUES
+                                                ('Amsterdam', 52.367573, 4.904139),
+                                                ('Prague', 50.075539, 14.437800),
+                                                ('Brussels', 50.850346, 4.351721),
+                                                ('Copenhagen', 55.676098, 12.568337),
+                                                ('Lisbon', 38.716174, -9.139287),
+                                                ('Warsaw', 52.229676, 21.012229),
+                                                ('Budapest', 47.497913, 19.040236),
+                                                ('Helsinki', 60.169856, 24.938379),
+                                                ('Stockholm', 59.329323, 18.068581),
+                                                ('Athens', 37.983810, 23.727539);
 
-INSERT INTO restaurant(admin_id, address, longitude, latitude, city_id, phone, email)
-VALUES (5, 'Vishgorodska avenue 3', 48.459832, 35.031861, 5, '+380685573589', 'fastandfoodycorp@gmail.com'),
-       (4, 'Portova avenue 6', 50.432090, 30.519048, 4, '+380984575567', 'fastandfoodycorp@gmail.com'),
-       (3, 'Shevchenka avenue 12', 47.862232, 35.080849, 3, '+380977842869', 'fastandfoodycorp@gmail.com'),
-       (2, 'Miru avenue 154', 51.505058, 31.272312, 2, '+380687412589', 'fastandfoodycorp@gmail.com'),
-       (1, 'Soborniy avenue 198', 47.097155, 37.544608, 1, '+380671234675', 'fastandfoodycorp@gmail.com');
+INSERT INTO restaurant(admin_id, address, latitude, longitude, city_id, phone, email)
+VALUES (5, 'Champs-Élysées 12', 48.870848, 2.307515, 1, '+33123456789', 'eurodiningparis@gmail.com'),
+       (4, 'Unter den Linden 35', 52.517038, 13.388860, 2, '+49301234567', 'eurodiningberlin@gmail.com'),
+       (3, 'Via del Corso 89', 41.900104, 12.483348, 3, '+390612345678', 'eurodiningrome@gmail.com'),
+       (2, 'Gran Via 45', 40.419598, -3.707439, 4, '+34912345678', 'eurodiningmadrid@gmail.com'),
+       (1, 'Mariahilfer Str. 50', 48.196981, 16.338546, 5, '+43112345678', 'eurodiningvienna@gmail.com');
+
 
 INSERT INTO item (item_name, price, description, image, category) VALUES
                                                                       ('Coca-Cola', 1.50, 'Chilled carbonated drink', 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/coca-cola.webp?alt=media&token=d3df8ed6-b022-43b4-9e8c-5340d639a6bd', 1),
