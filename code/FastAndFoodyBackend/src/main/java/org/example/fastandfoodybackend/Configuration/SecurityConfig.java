@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/welcome", "/", "/menu", "/login", "/item/**", "/order-item", "/additional/**",
-                                "/restaurant**", "/restaurant/**", "/purchase/**").permitAll()
+                                "/restaurant**", "/restaurant/**", "/purchase/**", "/paypal/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
