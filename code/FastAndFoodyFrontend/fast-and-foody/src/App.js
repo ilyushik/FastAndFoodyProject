@@ -8,6 +8,7 @@ import AboutUsView from "./pages/publicPages/AboutUsView/AboutUsView";
 import ContactsView from "./pages/publicPages/ContactsView/ContactsView";
 import AddOrderForm from "./pages/publicPages/AddOrderForm/AddOrderForm";
 import SelectRestaurantView from "./pages/publicPages/SelectRestaurantView/SelectRestaurantView";
+import PaypalSuccess from "./pages/publicPages/PaypalViews/PaypalSuccess";
 
 
 const isAuthenticated = () => {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/contacts" element={<ContactsView/>}/>
         <Route path="/select-restaurant" element={<SelectRestaurantView/>}/>
         <Route path="/order-form" element={<AddOrderForm/>}/>
+        <Route path="/paypal/success" element={<PaypalSuccess/>}/>
     </Routes>
   );
 }

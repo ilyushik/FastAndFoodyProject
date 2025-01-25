@@ -166,19 +166,36 @@ export default function AddOrderForm() {
         purchase.address = address
         purchase.total = totalPrice
 
+        localStorage.setItem("purchase", JSON.stringify(purchase))
+
         console.log(purchase)
 
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/purchase/add`,
-                purchase)
-            console.log(response.data)
-            console.log("purchase", purchase)
-            localStorage.removeItem("purchase");
-            localStorage.removeItem("items")
-            navigate("/")
-        } catch (e) {
-            console.log(e.response.data)
-            setError(e.response.data)
+        if (selectedPaymentWay?.value === 'Card') {
+            try {
+                const response = await
+                    axios.get(`${process.env.REACT_APP_BACKEND_LINK}/paypal/createPayment/${totalPrice}`)
+                console.log(response.data)
+                if (response.data.approval_url) {
+                    window.location.href = response.data.approval_url;
+                } else {
+                    console.log('Approval URL not found')
+                }
+            } catch (e) {
+                console.log(e.response?.data)
+            }
+        } else {
+            try {
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/purchase/add`,
+                    purchase)
+                console.log(response.data)
+                console.log("purchase", purchase)
+                localStorage.removeItem("purchase");
+                localStorage.removeItem("items")
+                navigate("/")
+            } catch (e) {
+                console.log(e.response.data)
+                setError(e.response.data)
+            }
         }
     }
 
