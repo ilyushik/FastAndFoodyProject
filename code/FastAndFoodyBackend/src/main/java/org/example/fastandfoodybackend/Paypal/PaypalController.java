@@ -3,7 +3,6 @@ package org.example.fastandfoodybackend.Paypal;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
-import org.example.fastandfoodybackend.DTO.PurchaseRequestDTO;
 import org.example.fastandfoodybackend.Service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,15 +39,14 @@ public class PaypalController {
         return ResponseEntity.ok(Collections.singletonMap("error", "Something went wrong"));
     }
 
-    @PostMapping("/success")
+    @GetMapping("/success")
     public ResponseEntity<?> success(@RequestParam("paymentId") String paymentId,
-                                     @RequestParam("PayerID") String payerId,
-                                     @RequestBody PurchaseRequestDTO purchaseRequestDTO) {
+                                     @RequestParam("PayerID") String payerId) {
         try {
             Payment payment = paypalService.executePayment(paymentId, payerId);
 
             if (payment.getState().equals("approved")) {
-                return ResponseEntity.ok(purchaseService.createPurchase(purchaseRequestDTO));
+                return ResponseEntity.ok("Payment successful");
             }
         } catch (PayPalRESTException e) {
             e.printStackTrace();
