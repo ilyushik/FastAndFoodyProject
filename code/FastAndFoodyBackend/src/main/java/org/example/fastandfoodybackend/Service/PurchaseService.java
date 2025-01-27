@@ -39,6 +39,7 @@ public class PurchaseService {
         } else {
             purchase.setAddress(purchaseDTO.getAddress());
         }
+        purchase.setWish(purchaseDTO.getWish());
         purchase.setDeliveryWay(deliveryWayRepository.findByWay(purchaseDTO.getDeliveryWay()));
         purchase.setPaymentWay(paymentWayRepository.findByWay(purchaseDTO.getPaymentWay()));
         if (purchaseDTO.getPersonId() != null) {
