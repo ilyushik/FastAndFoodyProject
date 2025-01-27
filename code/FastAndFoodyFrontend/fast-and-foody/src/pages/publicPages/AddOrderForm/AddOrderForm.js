@@ -34,8 +34,6 @@ export default function AddOrderForm() {
 
     const [user, setUser] = useState({});
 
-    const navigate = useNavigate();
-
     const [error, setError] = useState({});
 
     const fetchRestaurantHandler = useCallback(async () => {
@@ -159,7 +157,7 @@ export default function AddOrderForm() {
 
         const purchase = JSON.parse(localStorage.getItem("purchase"));
 
-        purchase.wish = wish
+        purchase.wish = wish ? wish : null;
         purchase.paymentWay = selectedPaymentWay?.value
         purchase.deliveryWay = selectedDeliveryWay?.value
         if (localStorage.getItem("token")) {
@@ -205,9 +203,13 @@ export default function AddOrderForm() {
                 localStorage.removeItem("purchase");
                 localStorage.removeItem("items")
 
-                if (response.data?.purchaseId !== null) {
-                    localStorage.setItem("order", response.data?.purchaseId)
-                    setPopFinishOrderEmailOpen(true)
+                if (localStorage.getItem("token") !== null) {
+                    if (response.data?.purchaseId !== null) {
+                        localStorage.setItem("order", response.data?.purchaseId)
+                        setPopFinishOrderEmailOpen(true)
+                    } else {
+                        setPopFinishOrderOpen(true)
+                    }
                 } else {
                     setPopFinishOrderOpen(true)
                 }

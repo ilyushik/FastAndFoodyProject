@@ -1,6 +1,6 @@
 import Layout from "../../../components/usersComponents/Layout/Layout";
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import PopupSuccessfullOrder from "../../../components/publicComponents/PopupSuccessfullOrder/PopupSuccessfullOrder";
 import PopupSuccessfullOrderEmail
     from "../../../components/publicComponents/PopupSuccessfullOrderEmail/PopupSuccessfullOrderEmail";
@@ -14,12 +14,15 @@ export default function PaypalSuccess() {
     const [popupFinishOrderEmailOpen, setPopupFinishOrderEmailOpen] = useState(false);
     const [popupFinishOrderOpen, setPopupFinishOrderOpen] = useState(false);
 
-    const [isFunctionUsed, setIsFunctionUsed] = useState(false);
+    const hasRun = useRef(false);
 
     const handlePaymentSuccess = async () => {
-        setIsFunctionUsed(true);
 
         try {
+            if (hasRun.current) {
+                return
+            }
+            hasRun.current = true;
             const purchase = localStorage.getItem("purchase");
 
             const response = await axios.get(
@@ -40,9 +43,13 @@ export default function PaypalSuccess() {
                     localStorage.removeItem("purchase");
                     localStorage.removeItem("items");
 
-                    if (responseAddPurchase.data?.purchaseId !== null) {
-                        localStorage.setItem("order", responseAddPurchase.data?.purchaseId);
-                        setPopupFinishOrderEmailOpen(true);
+                    if (localStorage.getItem("token") !== null) {
+                        if (responseAddPurchase.data?.purchaseId !== null) {
+                            localStorage.setItem("order", responseAddPurchase.data?.purchaseId);
+                            setPopupFinishOrderEmailOpen(true);
+                        } else {
+                            setPopupFinishOrderOpen(true);
+                        }
                     } else {
                         setPopupFinishOrderOpen(false);
                     }
@@ -56,21 +63,17 @@ export default function PaypalSuccess() {
     };
 
     useEffect(() => {
-        if (!isFunctionUsed) {
-            handlePaymentSuccess();
-        }
+        handlePaymentSuccess();
     }, []);
 
     return (
         <Layout>
-            {popupFinishOrderEmailOpen && <PopupSuccessfullOrder close={() => setPopupFinishOrderEmailOpen(false)} />}
-            {popupFinishOrderOpen &&
+            {popupFinishOrderOpen && <PopupSuccessfullOrder close={() =>
+                setPopupFinishOrderEmailOpen(false)} />}
+            {popupFinishOrderEmailOpen &&
                 <PopupSuccessfullOrderEmail purchaseId={JSON.parse(localStorage.getItem("order"))}
                                             close={() =>
                                                 setPopupFinishOrderOpen(false)} />}
-            {/*<h1>Successful payment</h1>*/}
-            {/*<h1>Thanks for your order</h1>*/}
-            {/*<Link to="/" >To main page</Link>*/}
         </Layout>
     )
 }
