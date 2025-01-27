@@ -1,0 +1,78 @@
+.back-popup-successfull-order-email {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.modal-justify-popup-successfull-order-email {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    width: 300px;
+    aspect-ratio: 2.5/1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFA00D;
+}
+
+.modal-screen-popup-successfull-order-email {
+    width: 100%;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.close-button-popup-successfull-order-email {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: white;
+}
+
+.popup-successfull-order-email-text {
+    color: white;
+    font-size: 18px;
+}
+.popup-successfull-order-email-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-successfull-order-email-yes-button {
+    border: none;
+    background: #eeeeee;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    color: #FFA00D;
+    padding: 10px 20px;
+}
+
+.popup-successfull-order-email-no-button {
+    border: 2px solid #eeeeee;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    color: #eeeeee;
+    padding: 10px 20px;
+}

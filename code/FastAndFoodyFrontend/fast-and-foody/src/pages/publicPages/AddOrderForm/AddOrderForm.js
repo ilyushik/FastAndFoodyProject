@@ -6,8 +6,14 @@ import AddOrderFormItemComponent
     from "../../../components/publicComponents/AddOrderFormItemComponent/AddOrderFormItemComponent";
 import Select from "react-select";
 import {useNavigate} from "react-router-dom";
+import PopupSuccessfullOrder from "../../../components/publicComponents/PopupSuccessfullOrder/PopupSuccessfullOrder";
+import PopupSuccessfullOrderEmail
+    from "../../../components/publicComponents/PopupSuccessfullOrderEmail/PopupSuccessfullOrderEmail";
 
 export default function AddOrderForm() {
+    const [popFinishOrderOpen, setPopFinishOrderOpen] = useState(false);
+    const [popFinishOrderEmailOpen, setPopFinishOrderEmailOpen] = useState(false);
+
     const [items, setItems] = useState([]);
     const [deliveryWay, setDeliveryWay] = useState([]);
     const [selectedDeliveryWay, setSelectedDeliveryWay] = useState(null);
@@ -144,6 +150,12 @@ export default function AddOrderForm() {
             setError({paymentWay: "Field can not be empty"})
             return
         }
+        if (selectedDeliveryWay?.value === 'Delivery') {
+            if (address.trim().length < 1) {
+                setError({address: "Field can not be empty"})
+                return
+            }
+        }
 
         const purchase = JSON.parse(localStorage.getItem("purchase"));
 
@@ -163,7 +175,7 @@ export default function AddOrderForm() {
         }
 
         purchase.items = JSON.parse(localStorage.getItem("items"));
-        purchase.address = address
+        purchase.address = address.trim().length < 1 ? null : address
         purchase.total = totalPrice
 
         localStorage.setItem("purchase", JSON.stringify(purchase))
@@ -189,9 +201,16 @@ export default function AddOrderForm() {
                     purchase)
                 console.log(response.data)
                 console.log("purchase", purchase)
+
                 localStorage.removeItem("purchase");
                 localStorage.removeItem("items")
-                navigate("/")
+
+                if (response.data?.purchaseId !== null) {
+                    localStorage.setItem("order", response.data?.purchaseId)
+                    setPopFinishOrderEmailOpen(true)
+                } else {
+                    setPopFinishOrderOpen(true)
+                }
             } catch (e) {
                 console.log(e.response.data)
                 setError(e.response.data)
@@ -201,6 +220,11 @@ export default function AddOrderForm() {
 
     return (
         <Layout>
+            {popFinishOrderOpen && <PopupSuccessfullOrder close={() => setPopFinishOrderOpen(false)} />}
+            {popFinishOrderEmailOpen &&
+                <PopupSuccessfullOrderEmail purchaseId={JSON.parse(localStorage.getItem("order"))}
+                                                                    close={() =>
+                                                                        setPopFinishOrderEmailOpen(false)} />}
             <div className="addOrderForm-background">
                 <div className="addOrderForm-container">
                     <div className="addOrderForm-restaurantInfo">
