@@ -37,7 +37,6 @@ export default function Header() {
             <nav className={`UserHeader-navbar ${showNavBar ? "show-nav" : ""}`}>
                 <a className="UserHeader-navbar-button" href="/menu">Menu</a>
                 <a className="UserHeader-navbar-button" href="/about-us">About us</a>
-                <a className="UserHeader-navbar-button" href="/contacts">Contacts</a>
                 <a className="UserHeader-navbar-button" href="/my-info">Account</a>
                 <button className="UserHeader-navbar-button-cart" onClick={() => setShowCart(!showCart)}>Cart</button>
             </nav>

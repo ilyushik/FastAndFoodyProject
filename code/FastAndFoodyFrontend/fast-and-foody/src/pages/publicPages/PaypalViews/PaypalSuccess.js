@@ -43,7 +43,7 @@ export default function PaypalSuccess() {
                     localStorage.removeItem("purchase");
                     localStorage.removeItem("items");
 
-                    if (localStorage.getItem("token") !== null) {
+                    if (localStorage.getItem("token") === null) {
                         if (responseAddPurchase.data?.purchaseId !== null) {
                             localStorage.setItem("order", responseAddPurchase.data?.purchaseId);
                             setPopupFinishOrderEmailOpen(true);
@@ -51,7 +51,7 @@ export default function PaypalSuccess() {
                             setPopupFinishOrderOpen(true);
                         }
                     } else {
-                        setPopupFinishOrderOpen(false);
+                        setPopupFinishOrderOpen(true);
                     }
                 } catch (e) {
                     console.log(e.response?.data);

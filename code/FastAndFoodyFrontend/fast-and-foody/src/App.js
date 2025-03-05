@@ -5,7 +5,6 @@ import UserEditInfoView from "./pages/userPages/userEditInfoView/userEditInfoVie
 import {Route, Routes, Navigate} from "react-router-dom";
 import MenuView from "./pages/publicPages/MenuView/MenuView";
 import AboutUsView from "./pages/publicPages/AboutUsView/AboutUsView";
-import ContactsView from "./pages/publicPages/ContactsView/ContactsView";
 import AddOrderForm from "./pages/publicPages/AddOrderForm/AddOrderForm";
 import SelectRestaurantView from "./pages/publicPages/SelectRestaurantView/SelectRestaurantView";
 import PaypalSuccess from "./pages/publicPages/PaypalViews/PaypalSuccess";
@@ -29,7 +28,6 @@ function App() {
         <Route path="/my-info/edit" element={<PrivateRoute><UserEditInfoView/></PrivateRoute>}/>
         <Route path="/menu" element={<MenuView/>}/>
         <Route path="/about-us" element={<AboutUsView/>}/>
-        <Route path="/contacts" element={<ContactsView/>}/>
         <Route path="/select-restaurant" element={<SelectRestaurantView/>}/>
         <Route path="/order-form" element={<AddOrderForm/>}/>
         <Route path="/paypal/success" element={<PaypalSuccess/>}/>

@@ -21,7 +21,7 @@ export default function UserInfoOrderTemplate(props) {
             console.log(response.data)
             setLoadedPurchase(response.data)
         } catch (e) {
-            console.log(e.response.data)
+            console.log(e.response?.data)
         }
     }, [])
 
@@ -30,7 +30,7 @@ export default function UserInfoOrderTemplate(props) {
     }, [fetchPurchaseHandler])
 
     return (
-        <div className="userInfoOrderTemplate-component">
+        <div className="userInfoOrderTemplate-component" key={purchase.id}>
             <div className="userInfoOrderTemplate-block">
                 <div className="userInfoOrderTemplate-info">
                     <p className="userInfoOrderTemplate-info-title">Order:</p>
