@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
@@ -38,31 +37,15 @@ public class PersonService {
     // find person by id
     public PersonDTO findById(int id) {
         Person person = personRepository.findById(id).orElse(null);
-        PersonDTO personDTO = new PersonDTO(person.getId(), person.getName(), person.getSurname(),
-                person.getEmail(), person.getUsername(), person.getPersonPassword(), person.getRole().getRole(),
-                person.getImage(), person.getPhone());
+        PersonDTO personDTO = new PersonDTO(person.getId(), person.getName(), person.getEmail(),
+                person.getRole().getRole(), person.getImage());
 
         return personDTO;
     }
 
-    // find people by surname
-    public List<Person> peopleBySurname(String surname) {
-        return personRepository.findPersonBySurname(surname);
-    }
-
-    // find people by username
-    public List<Person> peopleByUsername(String username) {
-        return personRepository.findPersonByUsername(username);
-    }
-
     // find people by email
     public List<Person> peopleByEmail(String email) {
-        return personRepository.findPersonByEmail(email);
-    }
-
-    // find people by phone
-    public List<Person> peopleByPhone(String phone) {
-        return personRepository.findPersonByPhone(phone);
+        return personRepository.findPeopleByEmail(email);
     }
 
     // purchases of user
@@ -100,18 +83,25 @@ public class PersonService {
         return purchaseDTO;
     }
 
-    // update personal info
-    public PersonDTO updatePerson (PersonDTO person, int id) {
-        Person personToUpdate = personRepository.findById(id).orElse(null);
-        personToUpdate.setName(person.getName());
-        personToUpdate.setSurname(person.getSurname());
-        personToUpdate.setPhone(person.getPhone());
-        personToUpdate.setEmail(person.getEmail());
-        personToUpdate.setUsername(person.getUsername());
-        personToUpdate.setPersonPassword(person.getPersonPassword());
-        personToUpdate.setImage(person.getImage());
 
-        personRepository.save(personToUpdate);
+    public PersonDTO findPersonByEmailChange(String email, String name, String image) {
+        Person person = personRepository.findByEmail(email);
+        if (!person.getName().equals(name)) {
+            person.setName(name);
+            personRepository.save(person);
+        }
+        if (!person.getImage().equals(image)) {
+            person.setImage(image);
+            personRepository.save(person);
+        }
+        PersonDTO personDTO = new PersonDTO(person.getId(), person.getName(), person.getEmail(),
+                person.getRole().getRole(), person.getImage());
+
+        return personDTO;
+    }
+
+    public Person findPersonByEmail(String email) {
+        Person person = personRepository.findByEmail(email);
 
         return person;
     }

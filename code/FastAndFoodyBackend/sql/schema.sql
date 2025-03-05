@@ -47,11 +47,7 @@ CREATE TABLE IF NOT EXISTS order_item (
 CREATE TABLE IF NOT EXISTS person(
                                      id int PRIMARY KEY AUTO_INCREMENT,
                                      name VARCHAR(32) NOT NULL ,
-                                    surname VARCHAR(32) NOT NULL,
-                                    phone VARCHAR(16) NOT NULL UNIQUE ,
                                     email VARCHAR(64) NOT NULL UNIQUE ,
-                                    username VARCHAR(32) UNIQUE NOT NULL,
-                                    person_password VARCHAR(32) CHECK (length(person_password) > 7),
                                     person_role INT NOT NULL REFERENCES user_role(id),
                                     image varchar(256)
     );
@@ -138,19 +134,12 @@ VALUES ('ROLE_CLIENT'), ('ROLE_ADMIN'), ('ROLE_OWNER');
 #        (4, 20, 240, 3),
 #        (5, 23, 150, 2);
 
-INSERT INTO person(name, surname, phone, email, username, person_password, person_role, image)
-VALUES ('Illia', 'Kamarali', '+380972224444', 'kamaraliilya@gmail.com', 'IlliaKamarali', '12345678', 3, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face1.png?alt=media&token=16531758-4933-487c-bf2a-8a027acf307a'),
-       ('Illia', 'Kyselev', '+380972342344', 'illia.kamarali.work@gmail.com', '1902Illia', '14141414', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face2.png?alt=media&token=00b3ff76-f272-4fde-a6ad-07f83088d115'),
-       ('Bohdan', 'Khokhlov', '+380923234234', 'khokhlov@gmail.com', 'Bodya0301', '01010101', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face3.png?alt=media&token=68f1684a-d5cd-4698-9b86-fffbd734ea77'),
-       ('Andriy', 'Matsievskiy', '+380972435678', 'matsiev2006@gmail.com', 'SushiMaster', '11111111', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face4.png?alt=media&token=b7fe6dde-d9ae-49ba-8fb5-d5fa0aeade12'),
-       ('Denis', 'Kuharik', '+380978765432', 'kykharykden11223@gmail.com', 'Kukhar_ua', '11112222', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face5.png?alt=media&token=1491c5c7-7391-4a6b-9071-b95a883e7207');
-
-INSERT INTO person(name, surname, phone, email, username, person_password, person_role, image) VALUES
-                                                                                                   ('Oleksiy', 'Semenenko', '+380987654321', 'oleksiy.semenenko@example.com', 'oleksiy_semenenko', '11111130', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face6.png?alt=media&token=5de9c272-3373-4fe4-acee-fd6c57e336cc'),
-                                                                                                   ('Yulia', 'Polyakova', '+380876543210', 'yuliya.polyakova@example.com', 'yuliya_polyakova', '22222257', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face7.png?alt=media&token=2ef56ec2-d4dc-4dbe-8614-aaadb1da3c70'),
-                                                                                                   ('Max', 'Kovalenko', '+380765432109', 'maxim.kovalenko@example.com', 'maxim_kovalenko', '33333368', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face8.png?alt=media&token=518caa3b-a792-44ce-aa91-38a853895cbf'),
-                                                                                                   ('Oksana', 'Bilich', '+380654321098', 'oksana.bilich@example.com', 'oksana_bilich', '44444424', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face1.png?alt=media&token=16531758-4933-487c-bf2a-8a027acf307a'),
-                                                                                                   ('Andriy', 'Petrov', '+380543210987', 'andriy.petrov@example.com', 'andriy_petrov', '55555535', 1, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face2.png?alt=media&token=00b3ff76-f272-4fde-a6ad-07f83088d115');
+INSERT INTO person(name, email, person_role, image)
+VALUES ('Illia', 'kamarali@gmail.com',3, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face1.png?alt=media&token=16531758-4933-487c-bf2a-8a027acf307a'),
+       ('Illia', 'illia.work@gmail.com', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face2.png?alt=media&token=00b3ff76-f272-4fde-a6ad-07f83088d115'),
+       ('Bohdan', 'khokhlov@gmail.com', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face3.png?alt=media&token=68f1684a-d5cd-4698-9b86-fffbd734ea77'),
+       ('Andriy', 'matsiev2006@gmail.com', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face4.png?alt=media&token=b7fe6dde-d9ae-49ba-8fb5-d5fa0aeade12'),
+       ('Denis', 'kykharykden11223@gmail.com', 2, 'https://firebasestorage.googleapis.com/v0/b/dailylog-44de4.appspot.com/o/face5.png?alt=media&token=1491c5c7-7391-4a6b-9071-b95a883e7207');
 
 INSERT INTO city(name, latitude, longitude) VALUES
                                                 ('Paris', 48.856613, 2.352222),
