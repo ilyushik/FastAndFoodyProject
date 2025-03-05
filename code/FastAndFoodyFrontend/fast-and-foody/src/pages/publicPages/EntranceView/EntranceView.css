@@ -114,6 +114,40 @@ input::placeholder {
     font-family: 'Montserrat', sans-serif;
 }
 
+.google-login-block {
+    height: 50px;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.google-login-button {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 0 15px;
+    border-radius: 10px;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: ease-in 0.2s;
+}
+
+.google-login-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.google-login-button-image {
+    position: relative;
+}
+
+.google-login-button-text {
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 1250px) {
     .entranceView-logo {
         width: 80px;

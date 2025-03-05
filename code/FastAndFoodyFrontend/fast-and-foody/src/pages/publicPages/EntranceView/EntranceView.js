@@ -4,6 +4,7 @@ import logo from "../../../images/logo_crop.png"
 import {useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 
 export default function EntranceView() {
 
@@ -74,6 +75,11 @@ export default function EntranceView() {
         }
     }
 
+    const googleLogin = () => {
+        console.log("Login with Google");
+        window.location.href = `${process.env.REACT_APP_BACKEND_LINK}/oauth2/authorization/google`
+    }
+
     return (
         <div className="entranceView-container">
             <div className="entranceView-back"></div>
@@ -84,91 +90,98 @@ export default function EntranceView() {
                         <div className="entranceView-block-info-image-block">
                             <img src={logo} className="entranceView-logo" alt="" />
                         </div>
-                        {formType === "LogIn" && (
-                            <div className="entranceView-block-info-form">
-                                <p className="entranceView-block-info-form-title">Log in</p>
 
-                                <form style={{"width": "100%"}} onSubmit={loginHandler}>
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />
-                                    </div>
-                                    {error?.username && (<p className="loginInputError">{error.username}</p>)}
-
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={passwordInput} onChange={passwordHandler} />
-                                    </div>
-                                    {error?.password && (<p className="loginInputError">{error.password}</p>)}
-
-                                    <div className="entranceView-block-info-form-button-block">
-                                        <button className="entranceView-block-info-form-button" type="submit">Continue</button>
-                                    </div>
-                                </form>
-
-                                <div className="entranceView-block-info-additional-button-block">
-                                    <button className="entranceView-block-info-additional-button" onClick={() => setFormType("Registration")}>I have no account</button>
-                                </div>
-
-                                <div className="entranceView-block-info-additional-button-block" onClick={() => setFormType("ResetPassword")}>
-                                    <button className="entranceView-block-info-additional-button">I forgot my password</button>
-                                </div>
+                        <div className="google-login-block">
+                            <div className="google-login-button" onClick={() => googleLogin()}>
+                                <FaGoogle className="google-login-button-image"/>
+                                <p className="google-login-button-text">Login with google</p>
                             </div>
-                        )}
+                        </div>
+                        {/*{formType === "LogIn" && (*/}
+                        {/*    <div className="entranceView-block-info-form">*/}
+                        {/*        <p className="entranceView-block-info-form-title">Log in</p>*/}
 
-                        {formType === "Registration" && (
-                            <div className="entranceView-block-info-form">
-                                <p className="entranceView-block-info-form-title">Registration</p>
+                        {/*        <form style={{"width": "100%"}} onSubmit={loginHandler}>*/}
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />*/}
+                        {/*            </div>*/}
+                        {/*            {error?.username && (<p className="loginInputError">{error.username}</p>)}*/}
 
-                                <form style={{"width": "100%"}}>
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Name" type="text" value={name} onChange={nameHandler} />
-                                    </div>
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={passwordInput} onChange={passwordHandler} />*/}
+                        {/*            </div>*/}
+                        {/*            {error?.password && (<p className="loginInputError">{error.password}</p>)}*/}
 
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Surname" type="text" value={surname} onChange={surnameHandler} />
-                                    </div>
+                        {/*            <div className="entranceView-block-info-form-button-block">*/}
+                        {/*                <button className="entranceView-block-info-form-button" type="submit">Continue</button>*/}
+                        {/*            </div>*/}
+                        {/*        </form>*/}
 
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />
-                                    </div>
+                        {/*        <div className="entranceView-block-info-additional-button-block">*/}
+                        {/*            <button className="entranceView-block-info-additional-button" onClick={() => setFormType("Registration")}>I have no account</button>*/}
+                        {/*        </div>*/}
 
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Phone" type="text" value={phone} onChange={phoneHandler} />
-                                    </div>
+                        {/*        <div className="entranceView-block-info-additional-button-block" onClick={() => setFormType("ResetPassword")}>*/}
+                        {/*            <button className="entranceView-block-info-additional-button">I forgot my password</button>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
 
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Email" type="email" value={email} onChange={emailHandler} />
-                                    </div>
+                        {/*{formType === "Registration" && (*/}
+                        {/*    <div className="entranceView-block-info-form">*/}
+                        {/*        <p className="entranceView-block-info-form-title">Registration</p>*/}
 
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={passwordInput} onChange={passwordHandler} />
-                                    </div>
+                        {/*        <form style={{"width": "100%"}}>*/}
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Name" type="text" value={name} onChange={nameHandler} />*/}
+                        {/*            </div>*/}
 
-                                    <div className="entranceView-block-info-form-button-block">
-                                        <button className="entranceView-block-info-form-button" type="submit">Registration</button>
-                                    </div>
-                                </form>
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Surname" type="text" value={surname} onChange={surnameHandler} />*/}
+                        {/*            </div>*/}
 
-                                <div className="entranceView-block-info-additional-button-block">
-                                    <button className="entranceView-block-info-additional-button" onClick={() => setFormType("LogIn")}>I already have an account</button>
-                                </div>
-                            </div>
-                        )}
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />*/}
+                        {/*            </div>*/}
 
-                        {formType === "ResetPassword" && (
-                            <div className="entranceView-block-info-form">
-                                <p className="entranceView-block-info-form-title">Reset password</p>
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Phone" type="text" value={phone} onChange={phoneHandler} />*/}
+                        {/*            </div>*/}
 
-                                <form style={{"width": "100%"}}>
-                                    <div className="entranceView-block-info-form-input-block">
-                                        <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />
-                                    </div>
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Email" type="email" value={email} onChange={emailHandler} />*/}
+                        {/*            </div>*/}
 
-                                    <div className="entranceView-block-info-form-button-block">
-                                        <button className="entranceView-block-info-form-button" type="submit">Continue</button>
-                                    </div>
-                                </form>
-                            </div>
-                        )}
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="********" type="password" value={passwordInput} onChange={passwordHandler} />*/}
+                        {/*            </div>*/}
+
+                        {/*            <div className="entranceView-block-info-form-button-block">*/}
+                        {/*                <button className="entranceView-block-info-form-button" type="submit">Registration</button>*/}
+                        {/*            </div>*/}
+                        {/*        </form>*/}
+
+                        {/*        <div className="entranceView-block-info-additional-button-block">*/}
+                        {/*            <button className="entranceView-block-info-additional-button" onClick={() => setFormType("LogIn")}>I already have an account</button>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
+
+                        {/*{formType === "ResetPassword" && (*/}
+                        {/*    <div className="entranceView-block-info-form">*/}
+                        {/*        <p className="entranceView-block-info-form-title">Reset password</p>*/}
+
+                        {/*        <form style={{"width": "100%"}}>*/}
+                        {/*            <div className="entranceView-block-info-form-input-block">*/}
+                        {/*                <input className="entranceView-block-info-form-input" placeholder="Username" type="text" value={usernameInput} onChange={usernameHandler} />*/}
+                        {/*            </div>*/}
+
+                        {/*            <div className="entranceView-block-info-form-button-block">*/}
+                        {/*                <button className="entranceView-block-info-form-button" type="submit">Continue</button>*/}
+                        {/*            </div>*/}
+                        {/*        </form>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
                     </div>
                 </div>
             </div>

@@ -20,10 +20,11 @@ export default function UserInfoView() {
     const fetchUserHandle = useCallback(async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+                withCredentials: true
             })
             console.log(response.data);
             setUser(response.data);
@@ -35,10 +36,11 @@ export default function UserInfoView() {
     const fetchPurchasesHandler = useCallback(async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info/orders`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+                withCredentials: true
             })
             console.log(response.data);
             setPurchases([])
@@ -53,10 +55,11 @@ export default function UserInfoView() {
     const fetchActivePurchasesHandler = useCallback(async () => {
         try {
             const response  = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info/active-orders`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+                withCredentials: true
             })
             setActivePurchases(response.data);
             console.log(response.data);
@@ -68,10 +71,11 @@ export default function UserInfoView() {
     const fetchFinishedPurchasesHandler = useCallback(async () => {
         try {
             const response  = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info/finished-orders`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+                withCredentials: true
             })
             setFinishedPurchases(response.data);
             console.log(response.data);
@@ -117,9 +121,9 @@ export default function UserInfoView() {
                                 <p className="userInfoView-secondary-info">{user.username}</p>
                             </div>
                         </div>
-                        <div className="userInfoView-action-button-block">
-                            <button className="userInfoView-action-button" onClick={() => navigator('/my-info/edit')}>Edit profile</button>
-                        </div>
+                        {/*<div className="userInfoView-action-button-block">*/}
+                        {/*    <button className="userInfoView-action-button" onClick={() => navigator('/my-info/edit')}>Edit profile</button>*/}
+                        {/*</div>*/}
                         <div className="userInfoView-action-button-block">
                             <button className="userInfoView-action-button" onClick={logout}>Logout</button>
                         </div>

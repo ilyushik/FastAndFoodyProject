@@ -94,10 +94,11 @@ export default function AddOrderForm() {
     const fetchUserDataHandler = useCallback(async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/my-info`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+                withCredentials: true
             });
             console.log(response.data)
             setUser(response.data);

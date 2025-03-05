@@ -13,10 +13,11 @@ export default function UserInfoOrderTemplate(props) {
         try {
             const response = await axios.get
             (`${process.env.REACT_APP_BACKEND_LINK}/my-info/orders/${purchase.id}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${localStorage.getItem("token")}`
+                // }
+                withCredentials: true
             })
             console.log(response.data)
             setLoadedPurchase(response.data)
