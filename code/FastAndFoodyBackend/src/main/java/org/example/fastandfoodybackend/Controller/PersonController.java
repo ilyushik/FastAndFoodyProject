@@ -67,4 +67,12 @@ public class PersonController {
 
         return ResponseEntity.ok(personService.usersFinishedPurchases(person.getId()));
     }
+
+    @DeleteMapping("/my-info/delete")
+    public ResponseEntity<?> personsDelete(@AuthenticationPrincipal OAuth2User principal) {
+        String email = principal.getAttribute("email");
+        Person person = personRepository.findPersonByEmail(email).orElseThrow();
+
+        return ResponseEntity.ok(personService.deletePerson(person));
+    }
 }

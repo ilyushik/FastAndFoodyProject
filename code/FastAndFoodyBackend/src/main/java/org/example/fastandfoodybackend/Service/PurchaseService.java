@@ -2,7 +2,6 @@ package org.example.fastandfoodybackend.Service;
 
 import org.example.fastandfoodybackend.DTO.AddPurchaseResponseDTO;
 import org.example.fastandfoodybackend.DTO.OrderItemDTO;
-import org.example.fastandfoodybackend.DTO.PurchaseDTO;
 import org.example.fastandfoodybackend.DTO.PurchaseRequestDTO;
 import org.example.fastandfoodybackend.Model.Person;
 import org.example.fastandfoodybackend.Model.Purchase;

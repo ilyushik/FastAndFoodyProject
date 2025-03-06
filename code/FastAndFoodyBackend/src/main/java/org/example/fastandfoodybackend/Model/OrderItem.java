@@ -26,7 +26,7 @@ public class OrderItem {
     private Item itemId;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "purchase" , referencedColumnName = "id")
     private Purchase purchase;
 

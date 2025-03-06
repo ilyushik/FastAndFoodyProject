@@ -44,7 +44,7 @@ public class Purchase {
     @OneToMany(mappedBy = "purchase")
     private List<OrderItem> orderItemId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person personId;
 

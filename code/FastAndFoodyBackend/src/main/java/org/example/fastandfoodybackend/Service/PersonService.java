@@ -105,4 +105,9 @@ public class PersonService {
 
         return person;
     }
+
+    public String deletePerson(Person person) {
+        personRepository.delete(person);
+        return "Person deleted";
+    }
 }

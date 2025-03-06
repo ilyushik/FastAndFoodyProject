@@ -78,14 +78,14 @@ CREATE TABLE IF NOT EXISTS purchase(
                                     promo_code int REFERENCES promo_code(id),
                                     status INT NOT NULL REFERENCES status(id) ,
                                     delivery_way INT NOT NULL REFERENCES delivery_way(id) ,
-                                    person_id int REFERENCES person(id),
+                                    person_id int REFERENCES person(id) ON DELETE CASCADE ,
                                     address VARCHAR(64),
                                     date timestamp NOT NULL,
                                     sum INT NOT NULL,
                                     email varchar(60)
     );
 
-ALTER TABLE order_item ADD COLUMN purchase int references purchase(id);
+ALTER TABLE order_item ADD COLUMN purchase int references purchase(id) on delete cascade ;
 
 INSERT INTO category(category_name)
 VALUES ('Cold drinks'), ('Hot drinks'), ('Beef'), ('Pork'), ('Fish and chicken'), ('Desserts'), ('Breakfasts'), ('Fries and sauces');
