@@ -45,6 +45,7 @@
 
 .userInfoView-secondary-info {
     font-size: 25px;
+    white-space: wrap;
 }
 
 .userInfoView-action-button-block {

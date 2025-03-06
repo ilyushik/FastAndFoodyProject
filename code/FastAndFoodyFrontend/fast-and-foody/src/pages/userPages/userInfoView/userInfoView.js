@@ -7,8 +7,6 @@ import {useNavigate} from "react-router-dom";
 
 export default function UserInfoView() {
 
-    const navigator = useNavigate();
-
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [purchases, setPurchases] = useState([]);
@@ -80,7 +78,7 @@ export default function UserInfoView() {
             setFinishedPurchases(response.data);
             console.log(response.data);
         } catch (e) {
-            console.log(e.response.data)
+            console.log(e.response?.data)
         }
     }, [])
 
@@ -105,6 +103,17 @@ export default function UserInfoView() {
         navigate("/");
     }
 
+    const deleteAccount = async () => {
+        try {
+            const response = await axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/my-info/delete`, {withCredentials: true})
+            console.log(response.data);
+            localStorage.removeItem("token");
+            navigate("/");
+        } catch (e) {
+            console.log(e.response?.data);
+        }
+    }
+
     return (
         <Layout>
             <div className="userInfoView-container">
@@ -112,23 +121,18 @@ export default function UserInfoView() {
                     <div className="userInfoView-align">
                         <div className="userInfoView-userInfo">
                             <div className="userInfoView-image-block">
-                                <img src={user?.image} className="userInfoView-image" />
+                                <img src={user.image} className="userInfoView-image" />
                             </div>
                             <div className="userInfoView-userInfo-text">
-                                <p className="userInfoView-userName">{user.name} {user.surname}</p>
+                                <p className="userInfoView-userName">{user.name}</p>
                                 <p className="userInfoView-secondary-info">{user.email}</p>
-                                <p className="userInfoView-secondary-info">{user.phone}</p>
-                                <p className="userInfoView-secondary-info">{user.username}</p>
                             </div>
                         </div>
-                        {/*<div className="userInfoView-action-button-block">*/}
-                        {/*    <button className="userInfoView-action-button" onClick={() => navigator('/my-info/edit')}>Edit profile</button>*/}
-                        {/*</div>*/}
                         <div className="userInfoView-action-button-block">
                             <button className="userInfoView-action-button" onClick={logout}>Logout</button>
                         </div>
                         <div className="userInfoView-action-button-block">
-                            <button className="userInfoView-action-button">Delete account</button>
+                            <button className="userInfoView-action-button" onClick={deleteAccount}>Delete account</button>
                         </div>
                     </div>
 

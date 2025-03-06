@@ -204,7 +204,7 @@ export default function AddOrderForm() {
                 localStorage.removeItem("purchase");
                 localStorage.removeItem("items")
 
-                if (localStorage.getItem("token") !== null) {
+                if (localStorage.getItem("token") === null) {
                     if (response.data?.purchaseId !== null) {
                         localStorage.setItem("order", response.data?.purchaseId)
                         setPopFinishOrderEmailOpen(true)
