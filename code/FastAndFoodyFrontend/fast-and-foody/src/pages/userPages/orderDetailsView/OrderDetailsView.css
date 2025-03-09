@@ -1,0 +1,39 @@
+.orderDetailsView-container {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 100vh;
+    padding: 0 10vw;
+    margin-bottom: 10vh;
+}
+
+.orderDetailsView-infos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderDetailsView-column {}
+
+.orderDetailsView-column-block {}
+
+.orderDetailsView-column-block-title {
+    color: #eee;
+    font-size: 1.1rem;
+    font-weight: 600;
+    height: 7px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.orderDetailsView-column-block-value {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.orderDetailsView-orderItems-container {
+    margin-top: 30px;
+    margin-bottom: 15vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+}

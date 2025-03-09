@@ -11,7 +11,7 @@ const OAuthCallback = () => {
         if (auth) {
             localStorage.setItem("token", auth);
             console.log("Redirecting to info page...");
-            window.location.href = `http://localhost:3000/my-info`
+            window.location.href = `${process.env.REACT_APP_FRONTEND_LINK}`
         } else {
             navigate("/");
         }

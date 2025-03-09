@@ -156,7 +156,11 @@ export default function UserInfoView() {
                                     <div className="userMainView-ordersInfo-active">
                                         <p className="userMainView-ordersInfo-active-text">Finished orders:</p>
                                         <div className="userInfoView-ordersInfo-active-scroll">
-                                            <UserInfoOrderTemplate/>
+                                            {finishedPurchases.map((purchase) => {
+                                                return (
+                                                    <UserInfoOrderTemplate purchase={purchase} />
+                                                )
+                                            })}
                                         </div>
                                     </div>
                                 )}

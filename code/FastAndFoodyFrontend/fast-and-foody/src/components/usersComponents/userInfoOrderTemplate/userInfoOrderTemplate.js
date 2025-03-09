@@ -2,10 +2,13 @@ import "./userInfoOrderTemplate.css"
 import button from "../../../images/arrow.png"
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function UserInfoOrderTemplate(props) {
 
     const purchase = props.purchase
+
+    const navigate = useNavigate();
 
     const [loadedPurchase, setLoadedPurchase] = useState({})
 
@@ -49,7 +52,7 @@ export default function UserInfoOrderTemplate(props) {
                 </div>
 
                 <div className="userInfoOrderTemplate-button">
-                    <button>
+                    <button onClick={() => navigate(`/order/${purchase.id}`)}>
                         <img src={button} className="userInfoOrderTemplate-button-icon" />
                     </button>
                 </div>
