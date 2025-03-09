@@ -8,6 +8,9 @@ import org.example.fastandfoodybackend.Repository.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class OrderItemService {
 
@@ -24,5 +27,14 @@ public class OrderItemService {
         orderItemEntity.setPurchase(purchase);
 
         return orderItemRepository.save(orderItemEntity);
+    }
+
+    public List<OrderItemDTO> findOrderItemsByOrderId(int orderId) {
+        return orderItemRepository.findAll().stream().filter(o->o.getPurchase().getId() == orderId)
+                .map(o -> {
+                    OrderItemDTO orderItemDTO = new OrderItemDTO(o.getId(), o.getAmount(), o.getTotal(),
+                            o.getItemId().getId());
+                    return orderItemDTO;
+                }).toList();
     }
 }
